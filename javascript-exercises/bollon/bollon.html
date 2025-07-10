@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <p>🎈</p>
+
+    <script>
+        // Your code here
+        let para = document.querySelector('p');
+        let bollon = para.firstChild;
+        para.style.fontSize = '20px';
+        let origin = 20;
+        window.addEventListener('keydown', upOrDown);
+
+        function upOrDown(event) {
+            console.log(event.key);
+            if (event.key === 'ArrowUp') {
+                origin += origin * 0.02;
+            }
+
+            if (event.key === 'ArrowDown') {
+                origin -= origin * 0.02;
+            }
+
+            para.style.fontSize = `${origin}px`;
+            console.log(origin);
+
+            if (origin > 150) {
+                let explode = document.createTextNode('💥');
+                para.replaceChild(explode, bollon);
+                window.removeEventListener('keydown', upOrDown);
+            }
+
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>
+

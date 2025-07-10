@@ -1,0 +1,91 @@
+.todo-items {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card {
+    padding: 1rem 2rem;
+    width: 70%;
+    border: 1px solid #ff8c00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    transition: 250ms linear;
+}
+
+.card > * {
+    margin: 0px;
+}
+
+.card:hover {
+    scale: 1.02;
+}
+
+.card-title {
+    font-family: '3dumb';
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-duedate {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.card-project {
+    font-family: '3dumb';
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.high-priority {
+    background-color: rgb(231, 94, 151);
+}
+
+.medium-priority {
+    background-color: #b07df3;
+}
+
+.low-priority {
+    background-color: rgb(129, 216, 129);
+}
+
+.card-circle-unchecked,
+.card-circle-checked {
+    width: 30px;
+    height: 30px;
+}
+
+.card-delete {
+    width: 4%;
+    height: 4%;
+}
+
+.card-delete:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.card-delete:active {
+    scale: 1;
+}
+
+.card-circle-checked.card-checked {
+    display: inline;
+}
+
+.item.item-checked > .card {
+    text-decoration: line-through;
+    opacity: 0.5;
+}

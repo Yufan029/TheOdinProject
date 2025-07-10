@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "myFont";
+    src: url('./fonts/alexbrush-regular-webfont.woff2') format('woff2'),
+         url('./fonts/alexbrush-regular-webfont.woff') format(('woff'));
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem;
+}
+
+h1 {
+    font-family: "myFont";
+    font-size: 5rem;
+    color: rgb(240, 79, 51);
+}
+
+.intro {
+    font-family: "myFont";
+    font-size: 2rem;
+    color: rgb(108, 108, 247);
+    margin-bottom: 1rem;
+}
+
+button {
+    width: 8rem;
+    height: 3rem;
+    font-size: larger;
+    font-weight: bolder;
+    color: white;
+    background-color: rgb(134, 134, 231);
+}
+
+button:hover {
+    background-color:  rgb(108, 108, 247);
+    cursor: pointer;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuImage {
+    width: 20rem;
+}
+
+img {
+    margin-bottom: 4rem;
+}

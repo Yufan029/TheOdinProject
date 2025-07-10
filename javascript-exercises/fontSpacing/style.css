@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --lineHeight: 0;
+  --letterSpacing: 0;
+  --wordSpacing: 0;  
+}
+
+label {
+  display: inline-block;
+  font-family: monospace;
+  text-transform: uppercase;
+  line-height: 1;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+input {
+  display: inline-block;
+  margin: 0 0 0 0.5em;
+  vertical-align: middle;
+}
+
+article {
+  max-width: 75ex;
+  margin: 2em 0 0 0;
+  font-family: Roboto;
+}
+
+p {
+  line-height: calc(1.4 + var(--lineHeight) / 100);
+  letter-spacing: calc(1em * (var(--letterSpacing) / 200));
+  word-spacing: calc(1em * (var(--wordSpacing) / 100));
+}

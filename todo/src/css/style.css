@@ -1,0 +1,173 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --title-color: #ff8c00;
+}
+
+@font-face {
+    font-family: "3dumb";
+    src: url('../fonts/3dumb-webfont.woff2') format('woff2'),
+         url('../fonts/3dumb-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(255, 178, 127);
+}
+
+.container {
+    width: 80%;
+    height: 100vh;
+    background-color: beige;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+#header-icon {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 5rem;
+
+    background-color: beige;
+    box-shadow: inset 0px -3px #ffa9a9;
+}
+
+.todoIcon {
+    width: 80px;
+    mix-blend-mode: multiply;
+    transition: 25ms linear;
+}
+
+.todoIcon:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+#header-icon > p {
+    font-size: 3rem;
+    font-family: '3dumb';
+    font-weight: bolder;
+    color: var(--title-color);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.side-list {
+    margin: 50px 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 80px 80px 350px 80px;
+    gap: 20px;
+    align-items: center;
+}
+
+.side-image {
+    width: 3rem;
+    height: 3rem;
+    justify-self: end;
+}
+
+.side-text {
+    font-family: '3dumb';
+    font-size: 2rem;
+    color: var(--title-color);
+    font-weight: bold;
+    align-self: start;
+    cursor: pointer;
+    transition: 25ms linear;
+}
+
+.side-text:hover {
+    scale: 1.1;
+}
+
+.side-text:active {
+    scale: 1;
+}
+
+.side-text.Today {
+    align-self: center;
+    margin: 0;
+}
+.side-image.Projects,
+.side-text.Projects {
+    grid-row: 2 / 3;
+    align-self: center;
+}
+
+.side-text.Projects {
+    margin: 0;
+}
+
+.side-text.Projects:hover {
+    scale: 1;
+    cursor: default;
+}
+
+.side-image.Clear,
+.side-text.Clear {
+    grid-row: 4 / 5;
+    margin: 0px;
+    align-self: center;
+}
+
+.side-text-projects.all-projects {
+    height: 350px;
+    font-family: '3dumb';
+    grid-column: 2 / 3;
+    font-size: larger;
+    align-self: start;
+    color: var(--title-color);
+    font-weight: bold;
+    transition: 25ms linear;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.side-text-projects.all-projects > div {
+    height: 3rem;
+}
+
+.side-text-projects.all-projects > *:active {
+    scale: 1;
+}
+
+.projectItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.projectItem img {
+    width: 15%;
+}
+
+.projectItem p:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.projectItem p:active {
+    scale: 1;
+}
+
+.projectItem img:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.projectItem img:active {
+    scale: 1;
+}

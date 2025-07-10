@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mountains"></div>
+
+    <script>
+          const MOUNTAINS = [
+            {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+            {name: "Everest", height: 8848, place: "Nepal"},
+            {name: "Mount Fuji", height: 3776, place: "Japan"},
+            {name: "Vaalserberg", height: 323, place: "Netherlands"},
+            {name: "Denali", height: 6168, place: "United States"},
+            {name: "Popocatepetl", height: 5465, place: "Mexico"},
+            {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+        ];
+
+        // Your code here
+        
+        let tr = document.createElement('tr');
+        for (let key of Object.keys(MOUNTAINS[0]))
+        {
+            let th = document.createElement('th');
+            let thText = document.createTextNode(key);
+            th.appendChild(thText);
+            th.style.border = "solid 1px black";
+            th.style.backgroundColor = "skyblue";
+            tr.appendChild(th);
+        }
+
+        let table = document.createElement('table');
+        table.appendChild(tr);
+
+        for (let mountain of MOUNTAINS) {
+            let trContent = document.createElement('tr');
+            for (let value of Object.values(mountain)) {                
+                let td = document.createElement('td');
+                let tdText = document.createTextNode(value);                
+                td.appendChild(tdText);
+                td.style.border = "solid 1px black";
+                td.style.textAlign = "right";
+                trContent.appendChild(td);
+            }
+
+            table.appendChild(trContent);
+        }
+
+        let mountains = document.querySelector('#mountains');
+        mountains.appendChild(table);
+
+        table.style.border = "solid 1px black";
+        setRowsColor('table tr:nth-child(odd)', '#c4c4c4');
+        setRowsColor('table tr:nth-child(even)', 'yellow');
+        
+        function setRowsColor(selector, color) {
+            let rows = document.querySelectorAll(selector);
+            rows.forEach(row => {
+                row.style.backgroundColor = color;
+            });
+        }
+    </script>
+</body>
+</html>

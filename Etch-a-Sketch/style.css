@@ -1,0 +1,59 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 960px;
+    width: 960px;
+}
+
+.grid {
+    background-color: skyblue;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    width: 200px;
+}
+
+.left {
+    display: flex;
+    gap: 20px;
+    margin: 10px;
+}
+
+button {
+    background-color: skyblue;
+    color: white;
+    padding: 7px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#colorPicker {
+    border-radius: 5px;
+}
+#number, #clear, #colorPicker, .dimension {
+    width: 135px;
+}
+
+#randomColorCheckbox {
+    margin-right: 12px;
+}
+
+.dimension {
+    text-align: center;
+}

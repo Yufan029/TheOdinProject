@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Sign up Form</title>
+</head>
+<body>
+    <div class="left">
+      <img class= "bg_image" src="images/background.jpg" alt="left hand side background image leafs."/>
+      <div class="embed_image">
+        <img class= "bg_logo" src="images/odin-lined.png" alt="reside left hand side logo image."/>
+        <p class="embed_font">ODIN</p>
+      </div>
+      <p class="credit">Photo by Halie West on <a href="https://unsplash.co/photos/green-leaf-plant-in-close-up-photography-25xggax4bSA">Unsplash</a></p>
+    </div>
+
+    <div class="right">
+        <div class="brief">
+          <p>This is not a real online service ! You Know you need something like this in your life to help you realize your deepest dreams. Sign Up now to get started.</p>
+          <p>You know you want to.</p>
+        </div>
+
+        <div class="form_main_part">
+            <p>Let's do this!</p>
+            <form id="my_from" action="/server" method="get">
+                <div class="entry">
+                    <label for="firstName" class="form_label">FIRST NAME</label>
+                    <input type="text" id="firstName" name="firstName" required placeholder="Thor"/>                    
+                </div>
+
+                <div class="entry">
+                    <label for="lastName" class="form_label">LAST NAME</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Odinson"/>                    
+                </div>
+
+                <div class="entry">
+                    <label for="email" class="form_label">EMAIL</label>
+                    <input type="email" id="email" name="email"/>                    
+                </div>
+
+                <div class="entry">
+                    <label for="phoneNumber" class="form_label">PHONE NUMBER</label>
+                    <input type="tel" id="phoneNumber"/>                    
+                </div>
+
+                <div class="entry">
+                    <label for="password" class="form_label">PASSWORD</label>
+                    <input type="password" id="password" required/>                    
+                </div>
+
+                <div class="entry">
+                    <label for="password" class="form_label">CONFIRM PASSWORD</label>
+                    <input type="password" id="password" required/>                    
+                </div>
+            </form>
+        </div>
+
+        <div class="submit_part">
+            <input type="submit" form="my_form" value="Create Account"/>
+            <p>Already have an account? Log in</p>
+        </div>
+    </div>
+</body>
+</html>

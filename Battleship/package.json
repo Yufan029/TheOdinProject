@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "GameBoard.js",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

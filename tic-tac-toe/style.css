@@ -1,0 +1,116 @@
+:root {
+    --whole-color: rgb(40, 240, 240);
+}
+
+body {
+    background-color: var(--whole-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    height: 8rem;
+    width: 8rem;
+    background-color: var(--whole-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid white;
+}
+
+p {
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:nth-child(1),
+button:nth-child(4),
+button:nth-child(7) {
+    border-left: none;
+}
+
+button:nth-child(1),
+button:nth-child(2),
+button:nth-child(3) {
+    border-top: none;
+}
+
+button:nth-child(3),
+button:nth-child(6),
+button:nth-child(9) {
+    border-right: none;
+}
+
+button:nth-child(7),
+button:nth-child(8),
+button:nth-child(9) {
+    border-bottom: none;
+}
+
+button {
+    font-size: 4rem;
+}
+
+.reset,
+.enter-names {
+    background-color: rgb(188, 131, 241);
+    font-size: 2rem;
+    padding: 8px 20px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+.info {
+    font-size: 2rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    font-size: large;
+}
+
+dialog {
+    border-radius: 15px;
+    border: none;
+}
+
+.cancel-submit {
+    grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+#cancel,
+#submit {
+    font-size: 0.9rem;
+    width: 80px;
+    margin: 0 20px;
+    background-color: rgb(166, 166, 248);
+    color: black;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 10px;
+}

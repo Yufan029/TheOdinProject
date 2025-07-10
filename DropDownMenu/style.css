@@ -1,0 +1,41 @@
+button {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+#menu-icon {
+  width: 20px;
+  height: 20px;
+}
+
+#close-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.container {
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  top: 0;
+  left: 25px;
+}
+
+li {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  width: 50px;
+  padding: 3px;
+}
+
+li:first-child {
+  border-top: 1px solid black;
+}

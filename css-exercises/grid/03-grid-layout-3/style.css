@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.container div {
+  padding: 15px;
+  font-size: 32px;
+  font-family: Helvetica;
+  font-weight: bold;
+  color: white;
+}
+
+.header {
+  background-color: #393f4d;
+}
+
+.menu ul,
+.menu li {
+  font-size: 16px;
+}
+
+.sidebar {
+  background-color: #C50208;
+}
+
+.sidebar .photo {
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+  border-radius: 10px;
+}
+
+
+.sidebar .side-content {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.nav {
+  background-color: #C50208;
+}
+
+.nav ul li {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.article {
+  background-color: #bccbde;
+}
+
+.article p {
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+  text-align: left;
+}
+
+.article .card {
+  background-color: #FFFFFF;
+  color: black;
+  text-align: center;
+}
+
+.card p {
+  color: black;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.card .title {
+  font-size: 18px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #393f4d;
+}
+
+.footer p {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+          "header  header"
+          "sidebar nav"
+          "sidebar article"
+          "footer  footer";
+  gap: 4px;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.menu {
+  place-content: center;
+}
+
+.header ul {
+  list-style-type: none;
+  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: end;
+}
+
+.header ul > li:first-of-type {
+  grid-column: 2;
+}
+
+.nav ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-evenly;
+}
+
+.article {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  gap: 15px;
+}
+
+.article > div {
+  height: 200px;
+}
+
+.title {
+  margin: 10px;
+}
+
+.sidebar {
+  display: grid;
+  gap: 50px;
+}
+
+.photo, 
+.side-content {
+  display: grid;
+  place-content: center;
+}
