@@ -16,7 +16,7 @@ function getHumanChoice() {
         return null;
     }
 
-     humanChoice = humanChoice.toLowerCase();
+    humanChoice = humanChoice.toLowerCase();
     if (humanChoice === 'q' || humanChoice === 'quit') {
         console.log(`Exit`);
         return 'q';
