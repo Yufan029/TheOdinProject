@@ -4,11 +4,11 @@ let clear = document.querySelector('#clear');
 let container = document.querySelector('.container');
 let randomColorCheckbox = document.querySelector('#randomColorCheckbox');
 let colorPicker = document.querySelector('#colorPicker');
-let checkboxDiv = document.querySelector('.checkboxDiv');
 
 const decreaseRate = 0.1;
 const canvasWidth = 960;
 
+// Initialise to grey.
 colorPicker.value = "#e2e2e2";
 clear.addEventListener('click', drawCanvas);
 

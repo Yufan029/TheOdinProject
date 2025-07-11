@@ -46,6 +46,7 @@ button {
 #colorPicker {
     border-radius: 5px;
 }
+
 #number, #clear, #colorPicker, .dimension {
     width: 135px;
 }
