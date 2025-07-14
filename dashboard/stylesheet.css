@@ -13,12 +13,13 @@ body {
 
 .header {
     grid-row: 1;
-    grid-column: 2 ;
-}
+    grid-column: 2;
 
-.header img {
-    width: 30px;
-    height: 30px;
+    background-color:ghostwhite;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
 }
 
 .sidebar {
@@ -31,98 +32,26 @@ body {
     grid-column: 2;
 }
 
-.sidebar svg {
-    width: 35px;
-    height: 35px;
-    fill: white;
+.header img {
+    width: 30px;
+    height: 30px;
 }
 
-.sidebar {
-    background-color: dodgerblue;
-    color: white;
-    font-size: x-large;
-    font-weight: 600;
-    padding: 1.5rem;
-
-    display: grid;
-    grid-template-rows: 2fr 6fr 3fr 10fr;
-    align-items: start;
-    gap: 40px;
-}
-
-.sidebar-top .menu {
-    display: grid;
-    justify-content: start;
-}
-
-.sidebar-middle,
-.sidebar-bottom {
-    display: grid;
-    gap: 20px;
-    align-items: center;
-}
-
-.sidebar-top div,
-.sidebar-middle div,
-.sidebar-bottom div {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    align-items: center;
-    column-gap: 15px;
-}
-
-.sidebar-top div svg {
-    margin-right: 20px;
-    width: 50px;
-    height: 50px;
-}
-
-.menu {
-    cursor: pointer;
-    transition: 0.1s linear;
-}
-
-.menu:hover {
-    scale: 1.1
-}
-
-.header {
-    background-color:ghostwhite;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    align-items: center;
-}
-
-.header-top-left, 
-.header-bottom-left {
+.header-top-left{
     justify-self: start;
     margin: 1rem 2rem;
     display: flex;
 }
 
-input[type="search"] {
-    width:600px;
-    height: 25px;
-    border-radius: 10px;
-    align-self: center;
-    margin-left: 1rem;
-    background-color: #ececec;
-    border: none;
-}
-
-input[type="search"]:focus,
-input[type="search"]:active {
-    outline: none;
-    border: 1px solid lightgreen;
-}
-
 .header-bottom-left {
+    column-gap: 3rem;
+    align-items: center;
+    justify-self: start;
+    margin: 1rem 2rem;
+
     display: grid;
     grid-template-columns: 10% auto;
     grid-template-rows: 1fr 1fr;
-    column-gap: 3rem;
-    align-items: center;
 }
 
 .header-bottom-left img {
@@ -148,6 +77,11 @@ input[type="search"]:active {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+}
+
+.header-top-right #bell {
+    color: ghostwhite;
+    transition: 1px, 3px;
 }
 
 .header-top-right label {
@@ -187,16 +121,79 @@ input[type="search"]:active {
     color: white;
 }
 
+.sidebar svg {
+    width: 35px;
+    height: 35px;
+    fill: white;
+}
+
+.sidebar {
+    background-color: dodgerblue;
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-rows: 2fr 6fr 3fr 10fr;
+    align-items: start;
+    gap: 40px;
+}
+
+.sidebar-top div,
+.sidebar-middle div,
+.sidebar-bottom div {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    justify-content: start;
+    column-gap: 15px;
+}
+
+.sidebar-middle,
+.sidebar-bottom {
+    display: grid;
+    gap: 20px;
+    align-items: center;
+}
+
+.sidebar-top div svg {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.menu {
+    cursor: pointer;
+    transition: 0.1s linear;
+}
+
+.menu:hover {
+    scale: 1.1
+}
+
+input[type="search"] {
+    width:600px;
+    height: 25px;
+    border-radius: 10px;
+    align-self: center;
+    margin-left: 1rem;
+    background-color: #ececec;
+    border: none;
+}
+
+input[type="search"]:focus,
+input[type="search"]:active {
+    outline: none;
+    border: 1px solid lightgreen;
+}
+
 .main {
     background-color: #ececec;
     box-shadow: inset 0.2px 2px 5px gray;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 1rem;
-}
-
-.main img {
-    width: 7%;
 }
 
 .main-left {
@@ -320,18 +317,8 @@ input[type="search"]:active {
     background-color: rgb(255, 0, 242);
 }
 
-.trending .info {
-    justify-content: center;
-}
-
 .info p {
     margin: 0;
     font-size: small;
     font-weight: 400;
 }
-
-.header-top-right #bell {
-    color: ghostwhite;
-    transition: 1px, 3px;
-}
-
