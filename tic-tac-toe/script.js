@@ -2,17 +2,17 @@ const defaultToken = '';
 const BOARD_ROW = 3;
 const BOARD_COLUMN = 3;
 
-function Cell() {
-    let token = defaultToken;
+// function Cell() {
+//     let token = defaultToken;
 
-    const setToken = (newToken) => token = newToken;
-    const getToken = () => token;
+//     const setToken = (newToken) => token = newToken;
+//     const getToken = () => token;
 
-    return {
-        setToken, 
-        getToken
-    };
-}
+//     return {
+//         setToken, 
+//         getToken
+//     };
+// }
 
 function gameBoardFactory() {
     let board = [];
@@ -64,8 +64,8 @@ function gameController() {
         }
     ]
 
-    const board = gameBoardFactory();
-    const boardContent = board.getBoard();
+    const boardFactory = gameBoardFactory();
+    const board = boardFactory.getBoard();
     let activePlayer = players[0];
 
     const setPlayer1Name = (name) => players[0].name = name;
@@ -78,10 +78,10 @@ function gameController() {
 
     const printNewRound = () => {
         console.log(`${activePlayer.name}'s (${activePlayer.token}) turn.`);
-        board.printBoard();
+        boardFactory.printBoard();
     }
 
-    const dropToken = (row, column) => board.dropToken(row, column, activePlayer.token);
+    const dropToken = (row, column) => boardFactory.dropToken(row, column, activePlayer.token);
 
     const playRound = (row, column) => {
         if (!dropToken(row, column)) {
@@ -103,7 +103,7 @@ function gameController() {
     const gotWinner = (row, column) => {
         // row win.
         for (let j = 0; j < BOARD_COLUMN; j++) {
-            if (boardContent[row][j] !== activePlayer.token) {
+            if (board[row][j] !== activePlayer.token) {
                 break;
             }
 
@@ -115,7 +115,7 @@ function gameController() {
 
         // column win.
         for (let i = 0; i < BOARD_ROW; i++) {
-            if (boardContent[i][column] !== activePlayer.token) {
+            if (board[i][column] !== activePlayer.token) {
                 break;
             }
 
@@ -127,7 +127,7 @@ function gameController() {
 
         // diagonal (\) win.
         for (let i = 0; i < BOARD_ROW; i++) {
-            if (boardContent[i][i] !== activePlayer.token) {
+            if (board[i][i] !== activePlayer.token) {
                 break;
             }
 
@@ -138,9 +138,9 @@ function gameController() {
         }
 
         // diagonal (/) win.
-        if (activePlayer.token === boardContent[0][2] &&
-            activePlayer.token === boardContent[1][1] &&
-            activePlayer.token === boardContent[2][0]) {
+        if (activePlayer.token === board[0][2] &&
+            activePlayer.token === board[1][1] &&
+            activePlayer.token === board[2][0]) {
                 
             console.log(`${activePlayer.name} win, at diagonal (/).`);
             return true;
@@ -152,7 +152,7 @@ function gameController() {
     const availableSpacesLeft = () => {
         for (let i = 0; i < BOARD_ROW; i++) {
             for (let j = 0; j < BOARD_COLUMN; j++) {
-                if (boardContent[i][j] === defaultToken) {
+                if (board[i][j] === defaultToken) {
                     return true;
                 }
             }
@@ -162,7 +162,7 @@ function gameController() {
     }
 
     const reset = () => {
-        board.init();
+        boardFactory.init();
         activePlayer = players[0];
         printNewRound();
     }
@@ -175,7 +175,7 @@ function gameController() {
         playRound,
         setPlayer1Name,
         setPlayer2Name,
-        board: board.getBoard(),
+        board: boardFactory.getBoard(),
     }
 }
 
@@ -223,8 +223,8 @@ function gameController() {
 //controller.reset();
 
 function ScreenController() {
-    const containerDiv = document.querySelector('.container');
-    const infoDiv = document.querySelector('.info');
+    const container = document.querySelector('.container');
+    const info = document.querySelector('.info');
     const resetButton = document.querySelector('.reset');
     const namesButton = document.querySelector('.enter-names');
     const dialog = document.querySelector('dialog');
@@ -235,8 +235,8 @@ function ScreenController() {
 
     let controller = gameController();
 
-    const updateBoard = () => {
-        containerDiv.textContent = '';
+    const renderBoard = () => {
+        container.textContent = '';
         updatePlayerInfo();
 
         for (let i = 0; i < BOARD_ROW; i++) {
@@ -246,16 +246,16 @@ function ScreenController() {
                 cellButton.dataset.column = j;
                 cellButton.classList.add('cell');
                 cellButton.textContent = controller.board[i][j];
-                containerDiv.appendChild(cellButton);
+                container.appendChild(cellButton);
             }
         }
 
         // Add the event handler for the entire container div.
-        containerDiv.addEventListener('click', placeToken);
+        container.addEventListener('click', placeToken);
     }
 
     const updatePlayerInfo = () => {
-        infoDiv.textContent = `${controller.getActivePlayer().name}'s (${controller.getActivePlayer().token}) turn.`;
+        info.textContent = `${controller.getActivePlayer().name}'s (${controller.getActivePlayer().token}) turn.`;
     }
 
     const placeToken = (e) => {
@@ -263,17 +263,17 @@ function ScreenController() {
         const columnIndex = e.target.dataset.column;
 
         let message = controller.playRound(rowIndex, columnIndex);
-        updateBoard();
+        renderBoard();
 
         if (message !== undefined) {
-            infoDiv.textContent = message;
-            containerDiv.removeEventListener('click', placeToken);
+            info.textContent = message;
+            container.removeEventListener('click', placeToken);
         }
     }
 
     resetButton.addEventListener('click', () => {
         controller.reset();
-        updateBoard();
+        renderBoard();
     });
 
     namesButton.addEventListener('click', () => {
@@ -293,13 +293,13 @@ function ScreenController() {
         controller.setPlayer1Name(player1Name.value);
         controller.setPlayer2Name(player2Name.value);
         controller.reset();
-        updateBoard();
+        renderBoard();
 
         e.preventDefault();
         dialog.close();
     });
 
-    updateBoard();
+    renderBoard();
 }
 
 ScreenController();
