@@ -129,7 +129,7 @@ function renderScreen(myLibrary) {
         // but the associated data-attribute is not change, will fix later.
         deleteSvg.addEventListener('click', (e) => {
             const index = e.currentTarget.dataset.index;
-            myLibrary.books.splice(index, 1);
+            myLibrary.deleteBook(index);
             renderLibrary();
         });
     

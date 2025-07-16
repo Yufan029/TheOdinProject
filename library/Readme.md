@@ -1,4 +1,4 @@
-Live Demo: <a href="https://yufan029.github.io/library/">Library</a>
+Live Demo: <a href="https://yufan029.github.io/TheOdinProject/library/">Library</a>
 1. The svg cannot be click.
 
   Adding the event listener for svg, then not working, search a bit find this file:
@@ -25,7 +25,7 @@ create svg under certain namespace.
 
 5. Difference between ```prototype```, ```__proto__``` and ```[[prototype]]```
 
-```__proto__``` is ```[[prototype]]```, same thing. ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
+```__proto__``` is ```[[prototype]]```, same thing, ```__proto__``` is the getter and setter of ```[[prototype]]```. ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
 
 ```prototype``` is an ordinary property.
 

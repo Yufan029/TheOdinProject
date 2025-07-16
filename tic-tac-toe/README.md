@@ -11,4 +11,4 @@ It is the separate of concern. https://www.ayweb.dev/blog/building-a-house-from-
 
 5. containerDiv.textContent = '', set the container textContent to '', can delete all the sub nodes inside.
 
-6. The first time I think about this tic tac toe, I really mainly thinking about the UI stuff, how to response the click event and place the token in the cell specifically. But actually we refresh the board every time we place the token, I didn't think that way in the first place.
+6. The first time I think about this tic tac toe, I really mainly thinking about the UI stuff, how to response the click event and place the token in the cell specifically. But actually we re-render the board every time we place the token, I didn't think that way in the first place.
