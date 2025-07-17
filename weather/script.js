@@ -6,6 +6,7 @@ const form = document.querySelector("#addressForm");
 
 form.addEventListener("submit", getAddressWeather);
 
+// Press win + . to type these icon.
 const iconMap = {
   "clear-day": "🌞", // or use a CSS class or image path
   "clear-night": "🌙",
@@ -146,4 +147,6 @@ async function insertGiphy(text) {
 
   const img = document.querySelector("#weatherGiphy");
   img.src = data.data.images.original.url;
+
+  document.querySelector(".imageContainer").classList.add("show");
 }
