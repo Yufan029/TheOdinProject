@@ -1,12 +1,12 @@
-# React + Vite
+The Odin Projet
+CV application 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Use react useState & passing props
 
-Currently, two official plugins are available:
+Common state lift up to the latest common ancester and pass the event handler to the child to update the state in parent.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prevent the default behavior for Form tag
 
-## Expanding the ESLint configuration
+handle the onClick of the button, no need handle onSubmit in this case.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The child input needs to have a NAME attribute, in order to use in the parent to create a new state value.
