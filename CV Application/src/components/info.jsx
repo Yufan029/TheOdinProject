@@ -1,4 +1,4 @@
-export function Info({ info, onChange, display, activeButton }) {
+export function Info({ info, onChange, activeButton }) {
     return (
         <div className={activeButton==="edit" ? "hide" : ""}>
             <div className="info">
