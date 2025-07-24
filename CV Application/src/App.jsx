@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Experience } from './components/Experience';
 import { DisplayExperience } from './components/DisplayExperience';
 
+let nextId = 1;
+
 function App() {
   const [activeButton, setActiveButton] = useState("submit");
   const [info, setInfo] = useState({
@@ -14,12 +16,13 @@ function App() {
     email: ''
   });
 
-  const [experienceInfo, setExperienceInfo] = useState({
+  const [experienceInfo, setExperienceInfo] = useState([{
+    id: 0,
     company: '',
     startDate: '',
     endDate: '',
     content: ''
-  })
+  }])
 
   function onInfoChange(e) {
     const { name, value } = e.target;
@@ -28,11 +31,35 @@ function App() {
     ));
   }
 
-  function OnExperienceChange(e) {
-    const { name, value } = e.target;
-    setExperienceInfo(prev => (
-      {...prev, [name]: value}
-    ));
+  function OnExperienceChange(e, id) {
+    const { name, value } = e.target;    
+    setExperienceInfo(experienceInfo.map(experience => {
+      if (experience.id === id) {
+        return {
+          ...experience,
+          [name]: value
+        }
+      } else {
+        return experience;
+      }
+    }));
+  }
+
+  function handleAddExperience() {
+    setExperienceInfo([
+      ...experienceInfo,
+      {
+        id: nextId++,
+        company: '',
+        startDate: '',
+        endDate: '',
+        content: ''
+      }
+    ])
+  }
+
+  function handleDeleteExperience(id) {
+    setExperienceInfo(experienceInfo.filter(experience => experience.id !== id));
   }
 
   function handleSubmit() {
@@ -45,6 +72,9 @@ function App() {
 
   return (
     <>
+      <header>
+        <h1>CV Application</h1>
+      </header>
       <form onSubmit={e => e.preventDefault()}>
         <section>Personal Info:</section>
         <hr />
@@ -54,7 +84,16 @@ function App() {
         <br /><br />
         <section>Experiences:</section>
         <hr />
-        <Experience activeButton={activeButton} experienceInfo={experienceInfo} onChange={OnExperienceChange}/>
+        <Experience 
+          activeButton={activeButton} 
+          experienceInfo={experienceInfo} 
+          onChange={OnExperienceChange}
+          onDeleteExperience={handleDeleteExperience} />
+        <button 
+          style={{display: activeButton === "edit" ? "none" : ""}}
+          className="addExp" 
+          onClick={handleAddExperience}>Add Experience</button>
+
         <DisplayExperience activeButton={activeButton} experienceInfo={experienceInfo} />
 
         <div className="buttons">
