@@ -13,7 +13,9 @@ import Header from './components/Header';
     { id: 7, count: 0 },
     { id: 8, count: 0 },
     { id: 9, count: 0 },
-    { id: 10, count: 0 }
+    { id: 10, count: 0 },
+    { id: 11, count: 0 },
+    { id: 12, count: 0 }
   ];
 
 function App() {

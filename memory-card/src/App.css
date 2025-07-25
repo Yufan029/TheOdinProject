@@ -17,7 +17,7 @@ header {
 }
 
 .headerInfo h3 {
-  font-size: 4rem;
+  font-size: 3rem;
   color: burlywood;
 }
 
@@ -31,7 +31,7 @@ header {
   display: flex;
   align-items: center;
   gap: 5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .easySelector {
@@ -59,11 +59,12 @@ header {
 }
 
 .cards {
-  margin: 3rem auto;
-    display: flex;
-    flex-wrap: wrap;
+  width: 85%;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
     
-    gap: 1rem;
+  gap: 1rem;
 }
 
 .easyBtn {
