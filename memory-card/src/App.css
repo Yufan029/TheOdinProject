@@ -1,0 +1,79 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.headerInfo h3 {
+  font-size: 4rem;
+  color: burlywood;
+}
+
+.headerInfo p {
+  font-style: italic;
+  font-size: large;
+  color: bisque;
+}
+
+.scoreBoard {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  font-size: 2rem;
+}
+
+.easySelector {
+  display: flex;
+  align-items: center;
+}
+
+.easySelector input {
+  margin: 1rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.easySelector label {
+  white-space: nowrap;
+}
+
+.bestScore {
+  white-space: nowrap;
+}
+
+.scoreInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards {
+  margin: 3rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 1rem;
+}
+
+.easyBtn {
+  width: 15rem;
+  height: 20rem;
+  font-size: 10rem;
+}
+
+@media (width < 700px) {
+  .scoreBoard {
+    flex-direction: column;
+  }
+}
