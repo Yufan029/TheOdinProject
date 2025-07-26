@@ -58,6 +58,17 @@ header {
   flex-direction: column;
 }
 
+.customiseSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customiseSelector button {
+  padding: 8px 15px;
+  border-radius: 4px;
+}
+
 .cards {
   width: 85%;
   margin: 2rem auto;

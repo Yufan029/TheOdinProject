@@ -22,18 +22,19 @@ function App() {
 
   async function fetchPokeman() {
     try {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=12");
-      const data = await response.json();
+      const ids = getIds();
+      const results = await Promise.all(
+        Array.from(ids).map(async (id) => {
+          console.log(id);
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+          const data = await response.json();
 
-      const details = await Promise.all(
-        data.results.map(pokemon => fetch(pokemon.url).then(res => res.json()))
-      );
-
-      const results = details.map((detail, i) => ({
-        id: i,
-        src: detail.sprites.front_default,
-        name: detail.name,
-        count: 0
+          return {
+            id: id,
+            name: data.name,
+            src: data.sprites.front_default,
+            count: 0
+          };
       }));
 
       SetInitialPokeman(results);
@@ -48,6 +49,19 @@ function App() {
   useEffect(() => {
     fetchPokeman();
   }, []);
+
+  function getIds() {
+    const maxNumber = 1000;
+    const count = 12;
+
+    const randomIds = new Set();
+    while (randomIds.size < count) {
+      const id = Math.floor(Math.random() * maxNumber) + 1;
+      randomIds.add(id);
+    }
+    
+    return randomIds;
+  }
 
   function handleBtnClick(contents, id) {
     let newContent = contents.map(c => {
@@ -87,7 +101,12 @@ function App() {
 
   return (
     <>
-      <Header easyMode={easyMode} score={score} bestScore={bestScore} setEasyMode={handleEasyModeClicked} />
+      <Header 
+        easyMode={easyMode}
+        score={score} 
+        bestScore={bestScore} 
+        setEasyMode={handleEasyModeClicked}
+        getNewBatch={fetchPokeman} />
       <main className="cards">
         {easyMode ? (
           <EasyDiv content={content} handleBtnClick={handleBtnClick} />
