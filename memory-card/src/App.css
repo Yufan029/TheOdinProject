@@ -68,6 +68,11 @@ header {
   gap: 1rem;
 }
 
+button > img {
+  width: 14rem;
+  height: auto;
+}
+
 .loading {
   font-size: 2rem;
 }

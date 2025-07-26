@@ -3,43 +3,50 @@ import './App.css'
 import EasyDiv from './components/EasyDiv';
 import Header from './components/Header';
 import { initialState } from './assets/InitialState';
-import GifyDiv from './components/GifyDiv';
-import { gifs } from './assets/gifs';
+import PokemanDiv from './components/PokemanDiv';
 
 function App() {
   const [easyMode, setEasyMode] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [content, setContent] = useState(easyMode ? initialState : gifs);
+  const [initialPokeman, SetInitialPokeman] = useState(null);
+  const [content, setContent] = useState(easyMode ? initialState : initialPokeman);
   const [loaded, setLoaded] = useState(false);
   
   function handleEasyModeClicked(checked) {
     setEasyMode(checked);
-    setContent(checked ? initialState : gifs);
+    setContent(checked ? initialState : initialPokeman);
     setScore(0);
     setBestScore(0);
   }
 
-  async function fetchRandomGifs(count = 12) {
-    const promises = [];
+  async function fetchPokeman() {
+    try {
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=12");
+      const data = await response.json();
 
-    for (let i = 0; i < count; i++) {
-      const url = `https://api.giphy.com/v1/gifs/random?api_key=g1l0d0WVaR6XcOWLGvaq0em0w1B7BG2a&tag=&rating=g`;
-      promises.push(fetch(url).then(res => res.json()));
+      const details = await Promise.all(
+        data.results.map(pokemon => fetch(pokemon.url).then(res => res.json()))
+      );
+
+      const results = details.map((detail, i) => ({
+        id: i,
+        src: detail.sprites.front_default,
+        name: detail.name,
+        count: 0
+      }));
+
+      SetInitialPokeman(results);
+      console.log(results);
+      setContent(results);
+      setLoaded(true);
+    } catch (error) {
+      console.log(error);
     }
-
-    const results = await Promise.all(promises);
-
-    console.log(results);
-    for (let i = 0; i < count; i++) {
-      gifs[i].src = results[i].data.images.fixed_width.url;
-    }
-
-    setLoaded(true);
   }
 
   useEffect(() => {
-    fetchRandomGifs();
+    fetchPokeman();
   }, []);
 
   function handleBtnClick(contents, id) {
@@ -60,7 +67,7 @@ function App() {
       }
 
       setScore(0);
-      setContent(easyMode ? initialState : gifs);
+      setContent(easyMode ? initialState : initialPokeman);
     } else {
       setScore(score + 1);
       console.log("this is newContent:");
@@ -85,9 +92,9 @@ function App() {
         {easyMode ? (
           <EasyDiv content={content} handleBtnClick={handleBtnClick} />
         ) : !loaded ? (
-              <div className="loading">Loading...    <p>Or "Too Many Requests", please check console log, or enjoy the game via <b>Easy Mode</b>, thanks. (👉ﾟヮﾟ)👉</p></div>
+              <div className="loading">Loading...    <p>Or enjoy the game via <b>Easy Mode</b>, thanks. (👉ﾟヮﾟ)👉</p></div>
             ) : (
-              <GifyDiv content={content} handleBtnClick={handleBtnClick} />
+              <PokemanDiv content={content} handleBtnClick={handleBtnClick} />
             )
         }
       </main>
