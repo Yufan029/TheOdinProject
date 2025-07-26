@@ -1,11 +1,11 @@
-export default function EasyDiv({ easyBtnContent, handleEasyBtnClick}) {
+export default function EasyDiv({ content, handleBtnClick }) {
     return (
-        easyBtnContent.map(content => (
+        content.map(c => (
             <button
-                key={content.id}
-                className={`easyBtn btn-${content.id}`}
-                onClick={() => handleEasyBtnClick(content.id)}>
-                {content.id}
+                    key={c.id}
+                    className={`easyBtn btn-${c.id}`}
+                    onClick={() => handleBtnClick(content, c.id)}>
+                {c.id}
             </button>
         ))
     );

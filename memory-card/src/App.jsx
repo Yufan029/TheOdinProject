@@ -1,39 +1,56 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import EasyDiv from './components/EasyDiv';
 import Header from './components/Header';
-
-  const initState = [
-    { id: 1, count: 0 },
-    { id: 2, count: 0 },
-    { id: 3, count: 0 },
-    { id: 4, count: 0 },
-    { id: 5, count: 0 },
-    { id: 6, count: 0 },
-    { id: 7, count: 0 },
-    { id: 8, count: 0 },
-    { id: 9, count: 0 },
-    { id: 10, count: 0 },
-    { id: 11, count: 0 },
-    { id: 12, count: 0 }
-  ];
+import { initialState } from './assets/InitialState';
+import GifyDiv from './components/GifyDiv';
+import { gifs } from './assets/gifs';
 
 function App() {
   const [easyMode, setEasyMode] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [easyBtnContent, setEasyBtnContent] = useState(initState);
+  const [content, setContent] = useState(easyMode ? initialState : gifs);
+  const [loaded, setLoaded] = useState(false);
+  
+  function handleEasyModeClicked(checked) {
+    setEasyMode(checked);
+    setContent(checked ? initialState : gifs);
+    setScore(0);
+    setBestScore(0);
+  }
 
-  function handleEasyBtnClick(id) {
-    console.log("I click:" + id);
-    let newContent = easyBtnContent.map(content => {
-      if (content.id === id) {
+  async function fetchRandomGifs(count = 12) {
+    const promises = [];
+
+    for (let i = 0; i < count; i++) {
+      const url = `https://api.giphy.com/v1/gifs/random?api_key=g1l0d0WVaR6XcOWLGvaq0em0w1B7BG2a&tag=&rating=g`;
+      promises.push(fetch(url).then(res => res.json()));
+    }
+
+    const results = await Promise.all(promises);
+
+    console.log(results);
+    for (let i = 0; i < count; i++) {
+      gifs[i].src = results[i].data.images.fixed_width.url;
+    }
+
+    setLoaded(true);
+  }
+
+  useEffect(() => {
+    fetchRandomGifs();
+  }, []);
+
+  function handleBtnClick(contents, id) {
+    let newContent = contents.map(c => {
+      if (c.id === id) {
         return {
-            ...content,
-            count: content.count+1
+            ...c,
+            count: c.count+1
           };
       } else {
-        return content
+        return c;
       }
     });
 
@@ -43,10 +60,12 @@ function App() {
       }
 
       setScore(0);
-      setEasyBtnContent(initState);
+      setContent(easyMode ? initialState : gifs);
     } else {
       setScore(score + 1);
-      setEasyBtnContent(shuffleArray(newContent));
+      console.log("this is newContent:");
+      console.log(newContent);
+      setContent(shuffleArray(newContent));
     }
   }
 
@@ -61,13 +80,16 @@ function App() {
 
   return (
     <>
-      <Header easyMode={easyMode} score={score} bestScore={bestScore} setEasyMode={setEasyMode} />
+      <Header easyMode={easyMode} score={score} bestScore={bestScore} setEasyMode={handleEasyModeClicked} />
       <main className="cards">
         {easyMode ? (
-          <EasyDiv easyBtnContent={easyBtnContent} handleEasyBtnClick={handleEasyBtnClick} />
-        ) : (
-          <h1>Use easy mode!</h1>
-        )}
+          <EasyDiv content={content} handleBtnClick={handleBtnClick} />
+        ) : !loaded ? (
+              <div className="loading">Loading...    <p>Or "Too Many Requests", please check console log, or enjoy the game via <b>Easy Mode</b>, thanks. (👉ﾟヮﾟ)👉</p></div>
+            ) : (
+              <GifyDiv content={content} handleBtnClick={handleBtnClick} />
+            )
+        }
       </main>
     </>
   )

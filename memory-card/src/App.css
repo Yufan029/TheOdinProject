@@ -63,8 +63,21 @@ header {
   margin: 2rem auto;
   display: flex;
   flex-wrap: wrap;
+  place-items: center;
     
   gap: 1rem;
+}
+
+.loading {
+  font-size: 2rem;
+}
+
+.loading p {
+  font-size: 1rem;
+}
+
+.loading p b {
+  color: burlywood;
 }
 
 .easyBtn {
