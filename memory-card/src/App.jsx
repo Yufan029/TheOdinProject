@@ -3,29 +3,24 @@ import './App.css'
 import EasyDiv from './components/EasyDiv';
 import Header from './components/Header';
 import { initialState } from './assets/InitialState';
-import PokemanDiv from './components/PokemanDiv';
+import PokemonDiv from './components/PokemonDiv';
 
 function App() {
   const [easyMode, setEasyMode] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [initialPokeman, SetInitialPokeman] = useState(null);
-  const [content, setContent] = useState(easyMode ? initialState : initialPokeman);
+  const [initialPokemon, SetInitialPokemon] = useState(null);
+  const [content, setContent] = useState(easyMode ? initialState : initialPokemon);
   const [loaded, setLoaded] = useState(false);
   
-  function handleEasyModeClicked(checked) {
-    setEasyMode(checked);
-    setContent(checked ? initialState : initialPokeman);
-    setScore(0);
-    setBestScore(0);
-  }
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
 
-  async function fetchPokeman() {
+  async function fetchPokemons() {
     try {
       const ids = getIds();
-      const results = await Promise.all(
-        Array.from(ids).map(async (id) => {
-          console.log(id);
+      const promises = Array.from(ids).map(async (id) => {
           const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
           const data = await response.json();
 
@@ -35,20 +30,18 @@ function App() {
             src: data.sprites.front_default,
             count: 0
           };
-      }));
+      });
 
-      SetInitialPokeman(results);
-      console.log(results);
+      const results = await Promise.all(promises);
+
+      // Store the initial value for all pokemons, count to 0
+      SetInitialPokemon(results);
       setContent(results);
       setLoaded(true);
     } catch (error) {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    fetchPokeman();
-  }, []);
 
   function getIds() {
     const maxNumber = 1000;
@@ -63,8 +56,15 @@ function App() {
     return randomIds;
   }
 
-  function handleBtnClick(contents, id) {
-    let newContent = contents.map(c => {
+  function handleEasyModeClicked(checked) {
+    setEasyMode(checked);
+    setContent(checked ? initialState : initialPokemon);
+    setScore(0);
+    setBestScore(0);
+  }
+
+  function handleClick(contents, id) {
+    let newContents = contents.map(c => {
       if (c.id === id) {
         return {
             ...c,
@@ -75,21 +75,23 @@ function App() {
       }
     });
 
-    if (newContent.some(item => item.count === 2)) {
+    // Check if any one of the new contents has count equals to 2
+    if (newContents.some(item => item.count === 2)) {
       if (score > bestScore) {
         setBestScore(score);
       }
 
       setScore(0);
-      setContent(easyMode ? initialState : initialPokeman);
+      setContent(easyMode ? initialState : initialPokemon);
     } else {
       setScore(score + 1);
       console.log("this is newContent:");
-      console.log(newContent);
-      setContent(shuffleArray(newContent));
+      console.log(newContents);
+      setContent(shuffleArray(newContents));
     }
   }
 
+  // Fisher–Yates shuffle algorithm
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -106,14 +108,14 @@ function App() {
         score={score} 
         bestScore={bestScore} 
         setEasyMode={handleEasyModeClicked}
-        getNewBatch={fetchPokeman} />
+        getNewBatch={fetchPokemons} />
       <main className="cards">
         {easyMode ? (
-          <EasyDiv content={content} handleBtnClick={handleBtnClick} />
+          <EasyDiv content={content} onClick={handleClick} />
         ) : !loaded ? (
               <div className="loading">Loading...    <p>Or enjoy the game via <b>Easy Mode</b>, thanks. (👉ﾟヮﾟ)👉</p></div>
             ) : (
-              <PokemanDiv content={content} handleBtnClick={handleBtnClick} />
+              <PokemonDiv content={content} onClick={handleClick} />
             )
         }
       </main>

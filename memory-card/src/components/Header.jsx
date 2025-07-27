@@ -15,7 +15,7 @@ export default function Header({ easyMode, score, bestScore, setEasyMode, getNew
                 onChange={e => setEasyMode(e.target.checked)} />
               <label htmlFor="easyModeInput">Easy Mode</label>
             </div>
-            <div className="New batch">
+            <div className="new-batch">
               <button onClick={getNewBatch} disabled={easyMode}>Get new batch</button>
             </div>
           </div>

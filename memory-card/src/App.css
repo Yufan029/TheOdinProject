@@ -1,6 +1,7 @@
 #root {
   margin: 0 auto;
   padding: 2rem;
+  --primary-color: burlywood;
 }
 
 *,
@@ -18,7 +19,7 @@ header {
 
 .headerInfo h3 {
   font-size: 3rem;
-  color: burlywood;
+  color: var(--primary-color);
 }
 
 .headerInfo p {
@@ -37,17 +38,21 @@ header {
 .easySelector {
   display: flex;
   align-items: center;
+  margin-bottom: 0.3rem;
 }
 
 .easySelector input {
-  margin: 1rem;
+  margin-right: 1rem;
   width: 2rem;
   height: 2rem;
 }
 
 .easySelector label,
-.bestScore {
+.bestScore,
+.score,
+.new-batch button {
   white-space: nowrap;
+  color: var(--primary-color);
 }
 
 .scoreInfo {
@@ -108,7 +113,7 @@ button > img {
   color: burlywood;
 }
 
-.easyBtn {
+.card-content {
   width: 15rem;
   height: 20rem;
   font-size: 10rem;
