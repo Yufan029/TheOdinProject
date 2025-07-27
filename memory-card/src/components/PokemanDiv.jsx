@@ -1,14 +1,14 @@
 export default function PokemanDiv({ content, handleBtnClick }) {
     return (
         content.map(pokeman => (
-            <button 
-                    key={pokeman.id}
-                    className={`easyBtn btn-${pokeman.id}`}
-                    onClick={() => handleBtnClick(content, pokeman.id)}>
+            <div className="card">
                 <img 
                     key={pokeman.id}
+                    className={`easyBtn img-${pokeman.id}`}
+                    onClick={() => handleBtnClick(content, pokeman.id)}                    
                     src={pokeman.src==="" ? null : pokeman.src} />
-            </button>
+                <h4>{pokeman.name}</h4>
+            </div>
         ))
     );
 }

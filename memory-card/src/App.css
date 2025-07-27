@@ -45,10 +45,7 @@ header {
   height: 2rem;
 }
 
-.easySelector label {
-  white-space: nowrap;
-}
-
+.easySelector label,
 .bestScore {
   white-space: nowrap;
 }
@@ -71,19 +68,28 @@ header {
 
 .cards {
   width: 85%;
-  margin: 2rem auto;
+  margin: 1rem auto;
   display: flex;
   flex-wrap: wrap;
-  place-items: center;
-    
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
-.cards button {
+.card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid gray;
+  border-radius: 5px;
+  max-height: 22rem;
 }
+
+.card h4 {
+  margin-bottom: 1.5rem;
+}
+
 
 button > img {
   width: 14rem;
