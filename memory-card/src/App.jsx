@@ -78,10 +78,7 @@ function App() {
 
     // Check if any one of the new contents has count equals to 2
     if (newContents.some(item => item.count === 2)) {
-      if (score > bestScore) {
-        setBestScore(score);
-      }
-
+      setBestScore(Math.max(score, bestScore));
       setScore(0);
       setContent(easyMode ? initialState : initialPokemon);
     } else {
