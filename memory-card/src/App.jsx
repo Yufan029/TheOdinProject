@@ -19,6 +19,7 @@ function App() {
 
   async function fetchPokemons() {
     try {
+      setLoaded(false);
       const ids = getIds();
       const promises = Array.from(ids).map(async (id) => {
           const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
