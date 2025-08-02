@@ -1,0 +1,20 @@
+.btn {
+    width: 90px;
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    background-color: aqua;
+}
+
+.primary {
+    composes: btn;
+    composes: primaryColor from "../../App.module.css";
+    composes: primaryBg from "../colors.module.css";
+}
+ 
+.secondary {
+    composes: btn;
+    color: #6E41E2;
+    background-color: #FFFFFF;
+}

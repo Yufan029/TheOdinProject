@@ -1,0 +1,11 @@
+.btn {
+  padding: 0.25em 0.5em;
+  background-color: silver;
+  color: #07c;
+  display: inline-flex;
+}
+
+.btnPrimary {
+  background-color: green;
+  color: white;
+}

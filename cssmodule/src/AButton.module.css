@@ -1,0 +1,16 @@
+.btn {
+    padding: 0.75em 1em;
+    background-color: #333;
+    color: #eee;
+    display: inline-flex;
+    text-decoration: none;
+    border-radius: 0.25em;
+}
+
+.btnPrimary {
+    background-color: #07c;
+}
+
+:global(.btn) {
+    outline: 1px solid red;
+}
