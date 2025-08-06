@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import './App.css'
 import Header from './components/Header';
 import MainContent from './components/MainContent';
+import Loading from './components/Loading';
+
+
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -9,9 +12,17 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-      const products = await fetch('https://fakestoreapi.com/products')
+      const results = await fetch('https://fakestoreapi.com/products')
                                     .then(res => res.json())
                                     .then(json => json);
+      
+      const products = results.map(result => {
+        return {
+          ...result,
+          count: 0,
+          selected: false,
+        }
+      });
 
       console.log(products);
       setProducts(products);
@@ -33,17 +44,33 @@ function App() {
     }    
   }, []);
 
+  function handleProductCountChange(id, count) {
+    console.log('id' + id);
+    const newProducts = products.map(product => {
+      if (product.id === id) {
+        return {
+          ...product,
+          count: count,
+        }
+      } else {
+        return product;
+      }
+    });
+    console.log(newProducts);
+    setProducts(newProducts);
+  }
+
   return (
-    <>
+    <div className="mainPage">
       {loading ? (
-        <p>loading...</p>
+        <Loading />
       ) : (
         <>
-          <Header />
-          <MainContent products={products}/>
+          <Header products={products} />
+          <MainContent products={products} onProductCountChange={handleProductCountChange} />
         </>
       )}
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,43 @@
+.card {
+    display: flex;
+    margin: 1rem;
+    padding: 1rem;
+    gap: 4rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 550;
+}
+
+.price {
+    font-style: italic;
+}
+
+.description {
+    font-size: 1.2rem;
+}
+
+.minusBtn,
+.plusBtn {
+    width: 20px;
+}
+
+.qty {
+    margin-top: 2rem;
+    width: 35px;
+    text-align: right;
+    padding: 0 4px;
+}
+
+.addBtn {
+    padding: .3rem 1rem;
+}

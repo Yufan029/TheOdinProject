@@ -1,11 +1,15 @@
-export default function MainContent({ products }) {
+import Card from './Card.jsx';
+
+export default function MainContent({ products, onProductCountChange }) {
     return (
-        <ul>
-            {products.map(product => (
-                <li key={product.id}>
-                    <img style={{width: 200}} src={product.image}/>
-                </li>
-            ))}
-        </ul>
+        <div>
+            <ul>
+                {products.map(product => (
+                    <li key={product.id}>
+                        <Card product={product} onProductCountChange={onProductCountChange} />
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
