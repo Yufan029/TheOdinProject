@@ -31,6 +31,10 @@
     width: 20px;
 }
 
+.minusBtn {
+    margin-left: 5px;
+}
+
 .qty {
     margin-top: 2rem;
     width: 35px;
@@ -38,6 +42,8 @@
     padding: 0 4px;
 }
 
-.addBtn {
+.addBtn,
+.removeBtn {
     padding: .3rem 1rem;
+    margin: .5rem
 }

@@ -1,5 +1,9 @@
+:root {
+    --primary-color: bisque;
+}
+
 .header {
-    background-color:bisque;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,11 +21,20 @@
     gap: 3rem;
 }
 
-ul a {
-    text-decoration: none;
+.homeBtn,
+.cartBtn {
+    font-size: 2rem;
+    background-color: var(--primary-color);;
+    border: none;
     margin-right: 10px;
+}
+
+.homeBtn:hover,
+.cartBtn:hover {
+    scale: 1.1;
 }
 
 .cartCount {
     font-size:1.3rem;
+    margin-left: .5rem;
 }

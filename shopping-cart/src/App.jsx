@@ -4,11 +4,10 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Loading from './components/Loading';
 
-
-
 function App() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState("home");
 
   const fetchProducts = async () => {
     try {
@@ -45,12 +44,26 @@ function App() {
   }, []);
 
   function handleProductCountChange(id, count) {
-    console.log('id' + id);
     const newProducts = products.map(product => {
       if (product.id === id) {
         return {
           ...product,
           count: count,
+        }
+      } else {
+        return product;
+      }
+    });
+
+    setProducts(newProducts);
+  }
+
+  function handleRemoveFromCart(id) {
+    const newProducts = products.map(product => {
+      if (product.id === id) {
+        return {
+          ...product,
+          count: 0,
         }
       } else {
         return product;
@@ -66,8 +79,20 @@ function App() {
         <Loading />
       ) : (
         <>
-          <Header products={products} />
-          <MainContent products={products} onProductCountChange={handleProductCountChange} />
+          <Header products={products} setCurrentPage={setCurrentPage} />
+          {currentPage === "home" ? (
+            <MainContent 
+              currentPage={currentPage}
+              products={products} 
+              onProductCountChange={handleProductCountChange}
+              onRemoveFromCart={handleRemoveFromCart} />
+          ) : (
+            <MainContent 
+              currentPage={currentPage}
+              products={products.filter(product => product.count > 0)} 
+              onProductCountChange={handleProductCountChange}
+              onRemoveFromCart={handleRemoveFromCart} />
+          )}          
         </>
       )}
     </div>

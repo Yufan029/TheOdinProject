@@ -1,0 +1,8 @@
+.payment {
+    margin: 2rem;
+    font-size: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
