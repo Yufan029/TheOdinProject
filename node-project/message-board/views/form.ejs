@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+
+        body {
+            max-width: 80%;
+            margin: 2rem auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            padding: 1rem;
+            font-size: 2rem;
+            margin: 0 auto;
+            background-color: bisque;
+        }
+
+        form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 1.6rem;
+            margin-top: 4rem;
+        }
+
+        input {
+            margin-left: .5rem;
+            margin-right: 1.5rem;
+            font-size: 2rem;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p>Please add new message:</p>
+    </header>
+    <form method="POST" action="/new">
+        <label>
+            Author:
+            <input type="text" name="author" placeholder="author" required />
+        </label>
+        <label>
+            Message:
+            <input type="text" name="message" placeholder="message" required />
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

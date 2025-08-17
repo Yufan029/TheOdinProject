@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %></title>
+    <style>
+        body {
+            max-width: 80%;
+            margin: 2rem auto;
+        }
+
+        header {
+            padding: 2rem;
+        }
+
+        a {
+            text-decoration: None;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            background-color: aqua;
+        }
+
+        ul {
+            font-size: 2rem;
+        }
+
+        ul li span:nth-child(3) {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        li a {
+            font-size: 1rem;
+            padding: 5px 10px;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/header') %>
+    <% if (typeof messages === 'undefined' || messages.length === 0) { %> 
+        <h1>No Message.</h1>
+    <% } else { %>
+        <ul>
+            <% messages.map(message => { %>
+                <li>
+                    <span><%= message.user %> say: </span>
+                    <span><%= message.text %><br /></span>
+                    <span><%= message.added %></span>
+                    <a href="/details?author=<%= message.user %>&text=<%= message.text %>&time=<%= message.added %>">Open</a>
+                    <hr />
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</body>
+</html>
