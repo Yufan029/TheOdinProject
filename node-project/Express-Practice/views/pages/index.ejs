@@ -1,0 +1,9 @@
+<%- include('../partials/header', title); %>
+<main class="container py-5">
+    <h1>Hi, <%= users[0] %>!</h1>
+
+    <!-- check if there's a visitor variable transfer from the router -->
+    <h3>Visitor: <%= typeof visitor != 'undefined' ? visitor : 0 %></h3>
+    <h3>Email: <%= users[0]?.email %></h3>
+</main>
+<%- include('../partials/footer'); %>

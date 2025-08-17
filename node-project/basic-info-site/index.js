@@ -17,7 +17,7 @@ console.log('-----------------------------');
 const indexFilePath = path.join(__dirname, 'index.html');
 console.log(indexFilePath);
 
-// Using the absolut file path.
+// Using the absolute file path.
 app.get('/', (req, res) => res.sendFile(indexFilePath));
 app.get('/index', (req, res) => res.sendFile(indexFilePath));
 
