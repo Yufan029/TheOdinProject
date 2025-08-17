@@ -17,12 +17,12 @@ app.use(express.static(db.assetsPath));
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 
-app.get('/', (req, res) => {
-    // if you specify the extension of the file, then even view engine can be omit!
-    res.render("index.ejs", { links: db.links, users: db.users });
-});
+// app.get('/', (req, res) => {
+//     // if you specify the extension of the file, then even view engine can be omit!
+//     res.render("index.ejs", { links: db.links, users: db.users });
+// });
 
-app.get('/pages', (req, res) => {
+app.get('/', (req, res) => {
     res.render('pages/index', { users: db.users, title: 'Pages' });
 });
 
@@ -30,7 +30,11 @@ app.get('/articles', (req, res) => {
     res.render('pages/articles', { articles: db.articles, title: 'Articles' });
 });
 
-app.use('/', indexRouter);
+app.get('/about', (req, res) => {
+    res.render('pages/about', { title: 'About', users: db.users });
+})
+
+//app.use('/', indexRouter);
 
 // Error handling middleware function, only this one have 4 parameters
 app.use((err, req, res, next) => {
