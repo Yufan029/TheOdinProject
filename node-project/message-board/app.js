@@ -10,5 +10,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 
 app.listen(PORT, () => {
-    console.log('Server running at http://localhost:3000');
+    console.log(`Server running at http://localhost:${PORT}`);
 });
