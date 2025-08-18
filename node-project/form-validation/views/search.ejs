@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <form action="/search" method="POST">
+            <label for="searchName">Name:</label>
+            <input id="searchName" type="text" name="searchName" value="<%= searchName %>"/>
+            <label for="searchEmail">Email:</label>
+            <input id="searchEmail" type="text" name="searchEmail" value="<%= searchEmail %>"/>
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (locals.users) { %>
+            <% if (locals.users.length !== 0) { %>
+                <p><%= locals.users.length %> results.</p>
+                <ul>
+                    <% users.map(user => { %> 
+                        <li>
+                            Id   : <%= user.id %><br />
+                            Name : <%= user.firstName %> <%= user.lastName %><br />
+                            Email: <%= user.email %><br />
+                            Age  : <%= user.age %><br />
+                            Bio  : <%= user.bio %><br />
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No result.</p>
+            <% } %>
+        <% } %>
+        <a href="/">Back</a>
+    </body>
+</html>

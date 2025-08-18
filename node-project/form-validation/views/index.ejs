@@ -1,0 +1,29 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <ul>
+            <% if (locals.users) { %>
+                <% users.forEach(user => { %>
+                    <li>
+                        ID: <%= user.id %><br />
+                        Name: <%= user.firstName %> <%= user.lastName %><br />
+                        Email: <%= user.email %><br />
+                        Age: <%= typeof user.age !== null ? user.age : "N/A" %> <br />
+                        Bio: <%= typeof user.bio !== "undefined" ? user.bio : "N/A" %>
+                    </li>
+                    <a href="/<%= user.id %>/update">Update</a>
+                    <form action="/<%= user.id %>/delete" method="POST" sytle="display: inline;">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete <%= user.firstName %> <%= user.lastName %>?')">Delete</button>
+                    </form>                
+                <% }); %>
+            <% } %>
+        </ul>
+        <a href="/create">Create a user</a>
+        <a href="/search">Search</a>
+    </body>
+</html>
