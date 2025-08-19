@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <form action="/search" method="GET">
+            <input type="text" name="searchValue" value="<%= locals.searchValue ? searchValue : "" %>" />
+            <button type="submit">Search</button>
+        </form>
+        <% if (!locals.users || locals.users.length === 0) { %>
+                <h2>No user.</h2>
+        <% } else { %>
+            <ul>
+                <% users.map(user => { %>
+                    <li><%= user.username %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+        <a href="/new">Add User</a>
+        <a href="/delete" onClick="return confirm('Are you sure you want to delete all users?')">Delete All</a>
+    </body>
+</html>
