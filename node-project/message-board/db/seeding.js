@@ -21,7 +21,7 @@ async function seeding() {
         database: process.env.DATABASE_NAME || "messages",
         password: process.env.DATABASE_PASSWORD || "1234",
         port: process.env.DATABASE_PORT || 5432,
-        ssl: 'require',
+        ssl: false,
     });
 
     // const client = new Client({
