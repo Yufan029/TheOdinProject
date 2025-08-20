@@ -1,0 +1,7 @@
+<% if (locals.errors) { %>
+    <ul style="color: red">
+        <% errors.map(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<%}%>

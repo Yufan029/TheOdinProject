@@ -46,10 +46,11 @@
         <ul>
             <% messages.map(message => { %>
                 <li>
-                    <span><%= message.user %> say: </span>
-                    <span><%= message.text %><br /></span>
-                    <span><%= message.added %></span>
-                    <a href="/details?author=<%= message.user %>&text=<%= message.text %>&time=<%= message.added %>">Open</a>
+                    <span><%= message.author %> say: </span>
+                    <span><%= message.message %><br /></span>
+                    <span><%= message.time %></span>
+                    <a href="/details?author=<%= message.author %>&message=<%= message.message %>&time=<%= message.time %>">Open</a>
+                    <a href="/<%= message.id %>/delete">Delete</a>
                     <hr />
                 </li>
             <% }) %>

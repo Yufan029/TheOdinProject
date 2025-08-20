@@ -1,8 +1,10 @@
 const express = require('express');
-const indexRouter = require('./indexRouter');
+const indexRouter = require('./routes/indexRouter');
+const dbSeeding = require('./db/seeding');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+dbSeeding();
 
 app.set('view engine', 'ejs');
 
