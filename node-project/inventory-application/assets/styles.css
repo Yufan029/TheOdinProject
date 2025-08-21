@@ -17,6 +17,18 @@ header, footer {
     align-items: center;
 }
 
+header {
+    background-color:bisque;
+    font-size: 3rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    font-style: italic;
+    font-size: medium;
+}
+
 #categoriesForm {
     display: flex;
     align-items: center;
