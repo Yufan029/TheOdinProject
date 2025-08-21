@@ -19,8 +19,15 @@ header, footer {
 
 #categoriesForm {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 1rem;
+}
+
+#categoriesForm input[type="checkbox"] {
+    width: 25px;
+    transform: scale(1.3);
 }
 
 .categoryDetails {
@@ -35,10 +42,48 @@ header, footer {
   background-color: lightgray;
 }
 
+.noCategory,
+.categoryItem label {
+    font-weight: bold;
+    font-size: large;
+}
+
+.addItemBtn,
+.addCategoryBtn {
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 2px 8px;
+    background-color:bisque;
+    border-radius: 4px;
+}
+
+.itemsTitle,
+.categoriesTitle {
+    margin: 1rem 0;
+}
+
+.noCategoryAnchor,
+.categoryItem a {
+    padding: 2px 8px;
+    margin: .2rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color:bisque;
+    text-decoration: none;
+}
+
+.indexSeparator {
+    margin: 2rem 0;
+}
+
 .categoryDetails p {
     font-style: italic;
 }
 
 .categoryDetails * {
     padding: .8rem;
+}
+
+.category-create-validation {
+    color: red;
 }

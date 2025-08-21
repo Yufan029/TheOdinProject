@@ -1,0 +1,7 @@
+<% if (locals.errors) { %> 
+    <ul class="category-create-validation">
+        <% errors.map(error => { %> 
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>

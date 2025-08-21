@@ -7,7 +7,10 @@ inventoryRouter.get("/", inventoryController.inventoryGet);
 inventoryRouter.get("/submit", inventoryController.selectedCategoriesGet)
 inventoryRouter.get("/newCategory", inventoryController.addCategoryGet);
 inventoryRouter.post("/newCategory", inventoryController.addCategoryPost);
+
 inventoryRouter.get("/:id/categoryDetails", inventoryController.categoryDetailsGet);
-inventoryRouter.get("/:id/categoryDelete", inventoryController.categoryDeleteGet)
+inventoryRouter.get("/:id/categoryDelete", inventoryController.categoryDeleteGet);
+inventoryRouter.get("/:id/categoryUpdate", inventoryController.categoryUpdateGet);
+inventoryRouter.post("/:id/categoryUpdate", inventoryController.categoryUpdatePost);
 
 module.exports = inventoryRouter;

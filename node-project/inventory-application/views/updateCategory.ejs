@@ -1,0 +1,8 @@
+<%- include('./partials/header'); %>
+<%- include("./partials/errors"); %>
+    <form action="/<%= category.id %>/categoryUpdate" method="POST">
+        <label for="categoryName">Category name:</label>
+        <input id="categoryName" type="text" name="newCategory" value="<%= category.name %>" required />
+        <button type="submit">Update</button>
+    </form>
+<%- include('./partials/footer'); %>

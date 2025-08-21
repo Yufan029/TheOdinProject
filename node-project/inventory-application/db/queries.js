@@ -5,9 +5,22 @@ async function getAllCategories() {
     return rows;
 }
 
-async function getCategory(id) {
+async function getCategoryById(id) {
     const { rows } = await pool.query("SELECT * FROM Categories WHERE id = $1;", [id]);
     return rows[0];
+}
+
+async function findCategoryByName(categoryName) {
+    const { rows } = await pool.query("SELECT * FROM Categories WHERE LOWER(name) = $1 LIMIT 1;", [categoryName]);
+    return rows[0];
+}
+
+async function UpdateCategoryNameById(id, categoryName) {
+    await pool.query("UPDATE categories SET name = $1 WHERE id = $2;", [categoryName, id]);
+}
+
+async function addCategory(category) {
+    await pool.query("INSERT INTO categories (name, time) VALUES ($1, $2);", [category, new Date()]);
 }
 
 async function deleteCategory(id) {
@@ -39,14 +52,12 @@ async function getAllItems(categories) {
     return rows;
 }
 
-async function addCategory(category) {
-    await pool.query("INSERT INTO categories (name, time) VALUES ($1, $2);", [category, new Date()]);
-}
-
 module.exports = {
     getAllCategories,
-    getCategory,
+    getCategoryById,
     getAllItems,
     addCategory,
     deleteCategory,
+    findCategoryByName,
+    UpdateCategoryNameById,
 }

@@ -1,7 +1,8 @@
-<%- include("./partials/header") %>
+<%- include("./partials/header"); %>
+<%- include("./partials/errors"); %>
 <form action="/newCategory" method="POST">
     <label for="newCategory">Add Category</label>
     <input id="newCategory" type="text" required name="newCategory" />
     <button type="submit">Add</button>
 </form>
-<%- include("./partials/footer") %>
+<%- include("./partials/footer"); %>

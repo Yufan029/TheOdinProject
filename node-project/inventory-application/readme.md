@@ -109,3 +109,5 @@ TRUNCATE TABLE ItemCategories;
 4. 因为已经在app.js里指明了express static file的folder，所以在header.ejs中直接引用href="/styles.css"即可。
 
 5. Delete category then redirect to the "/", lost the selected categories info.
+
+6. express-validator custom validation for unique category name. also LOWER used in the SQL sentence.
