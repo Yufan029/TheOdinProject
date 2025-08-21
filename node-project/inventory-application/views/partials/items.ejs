@@ -1,0 +1,8 @@
+<a href="/itemAdd">Add Item</a>
+<% if (!locals.items || items.length === 0) { %>
+    <h1>No Items.</h1>
+<% } else { %>
+    <% locals.items.map(item => { %>
+        <li><%= item.name %></li>
+    <%})%>
+<% } %>

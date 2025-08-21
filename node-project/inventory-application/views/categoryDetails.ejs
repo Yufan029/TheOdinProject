@@ -1,0 +1,12 @@
+<%- include('./partials/header') %>
+    
+    <h1>Category details</h1>
+    <div class="categoryDetails">
+        <label>Category id:</label>
+        <p><%= category.id === 0 ? "No id for this item" : category.id %></p>
+        <label>Category name:</label>
+        <p><%= category.id === 0 ? "This will show the items which has no category yet." : category.name %></p>
+        <label>Added time:</label>
+        <p><%= category.id === 0 ? category.time : new Date(category.time).toUTCString() %></p>
+    </div>
+<%- include('./partials/footer') %>

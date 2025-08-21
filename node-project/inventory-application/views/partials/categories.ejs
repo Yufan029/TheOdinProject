@@ -1,0 +1,31 @@
+    <% if (!locals.categories || locals.categories.length === 0) { %>
+        <h1>No categories</h1>
+    <% } else { %>
+        <h1>Categories:</h1>
+        <a href="/newCategory">Add Category</a>
+        <form id="categoriesForm" action="/submit" method="GET">
+            <div>
+                <label class="noCategory">
+                    <input type="checkbox" name="category" value="No Category" 
+                        <%= selected.includes("No Category") ? "checked" : "" %>
+                        onchange="this.form.submit()"/>
+                        No Category
+                </label>
+                <a href="/0/categoryDetails">Details</a>
+            </div>
+            
+            <% categories.map(category => { %>
+                <div class="categoryItem">
+                    <label>
+                        <input type="checkbox" name="category" value="<%= category.id %>" 
+                                <%= selected.includes(category.id.toString()) ? "checked" : "" %>
+                                onchange="this.form.submit()" />
+                            <%= category.name %>
+                    </label>
+                    <a href="/<%= category.id %>/categoryDetails">Details</a>
+                    <a href="/<%= category.id %>/categoryUpdate">Update</a>
+                    <a href="/<%= category.id %>/categoryDelete">Delete</a>
+                </div>
+            <% }) %>
+        </form>
+    <% } %>

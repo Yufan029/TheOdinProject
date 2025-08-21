@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#categoriesForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.categoryDetails {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.categoryDetails > *:nth-child(4n + 3),
+.categoryDetails > *:nth-child(4n + 4) {
+  background-color: lightgray;
+}
+
+.categoryDetails p {
+    font-style: italic;
+}
+
+.categoryDetails * {
+    padding: .8rem;
+}
