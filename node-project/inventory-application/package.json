@@ -4,6 +4,9 @@
   "description": "1. Allow item belong to zero or multiple categories, like LV belongs to fashion and luxury.\r Items \r     id, \r     name,",
   "main": "index.js",
   "scripts": {
+    "seed": "node ./db/seeding.js",
+    "start": "node ./app.js",
+    "start:withseed": "npm run seed && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
