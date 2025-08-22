@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Categories (
     name VARCHAR(255),
     time TIMESTAMP
 );
-
+git s
 CREATE TABLE IF NOT EXISTS Items (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
@@ -73,6 +73,9 @@ async function seeding() {
         database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
         port: process.env.DATABASE_PORT,
+        ssl: {
+            rejectUnauthorized: false   // allow self-signed certs
+        }
     });
 
     await client.connect();
