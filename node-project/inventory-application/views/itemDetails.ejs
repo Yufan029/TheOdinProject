@@ -1,0 +1,17 @@
+<%- include('./partials/header') %>    
+    <h1>Item details</h1>
+    <div class="itemDetails">
+        <label>Item id</label>
+        <p><%= item.id %></p>
+        <label>Item name</label>
+        <p><%= item.name %></p>
+        <label>Item quantity</label>
+        <p><%= item.quantity %></p>
+        <label>Item price</label>
+        <p>$<%= item.price %></p>
+        <labe>Item Categories</labe>
+        <p><%= categories.length === 0 ? "No category" : categories.map(category => category.name).join(', ') %></p>
+        <label>Added time:</label>
+        <p><%= new Date(item.time).toUTCString() %></p>
+    </div>
+<%- include('./partials/footer') %>

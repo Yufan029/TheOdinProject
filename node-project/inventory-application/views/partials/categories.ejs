@@ -12,7 +12,7 @@
     </div>
     
     <% if (locals.categories && locals.categories.length > 0) { %>
-        <% categories.map(category => { %>
+        <% locals.categories.map(category => { %>
             <div class="categoryItem">
                 <label>
                     <input type="checkbox" name="category" value="<%= category.id %>" 
@@ -22,7 +22,7 @@
                 </label>
                 <a href="/<%= category.id %>/categoryDetails">Details</a>
                 <a href="/<%= category.id %>/categoryUpdate">Update</a>
-                <a href="/<%= category.id %>/categoryDelete"
+                <a href="/<%= category.id %>/categoryDelete?selected=<%= selected.join(',') %>"
                 onclick="
                     const password = prompt('Please enter PASSWORD to delete');
                     if (password !== 'PASSWORD') {

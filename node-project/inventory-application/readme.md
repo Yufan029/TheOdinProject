@@ -2,6 +2,8 @@
 Items 
     id, 
     name,
+    quantity,
+    price,
 
 Categories
     id,
@@ -111,3 +113,9 @@ TRUNCATE TABLE ItemCategories;
 5. Delete category then redirect to the "/", lost the selected categories info.
 
 6. express-validator custom validation for unique category name. also LOWER used in the SQL sentence.
+
+7. When deleting the category, then re-render to the index.ejs file, we lost the previously selected category, after bit investigate, it has a couple of way to solve this:
+   a. Pass the selected via query string
+   b. Using session to store the previous condition and restore back when re-render.
+   c. Hidden form + POST
+   d. Client side js store the info into localstorage or DOM.

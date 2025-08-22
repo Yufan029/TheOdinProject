@@ -1,0 +1,24 @@
+<%- include('./partials/header'); %>
+<%- include("./partials/errors"); %>
+    <form class="updateItemForm" action="/<%= item.id %>/itemUpdate" method="POST">
+        <label for="itemName">Item name:</label>
+        <input id="itemName" type="text" name="itemName" value="<%= item.name %>" required />
+        <label for="itemQuantity">Item quantity:</label>
+        <input id="itemQuantity" type="number" name="newQuantity" min="0" value="<%= item.quantity %>" required />
+        <label for="itemPrice">Item price:</label>
+        <input id="itemPrice" type="number" name="newPrice" step="0.01" min="0" value="<%= item.price %>" required />
+        <div>
+            <fieldset>
+                <legend>Categories:</legend>
+                <% categories.map(category => { %>
+                    <label>
+                        <input type="checkbox" name="category" value="<%= category.id %>"
+                            <%= selectedCategoyIds.includes(category.id) ? "checked" : "" %> />
+                        <%= category.name %>
+                    </label>
+                <%})%>
+            </fieldset>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+<%- include('./partials/footer'); %>

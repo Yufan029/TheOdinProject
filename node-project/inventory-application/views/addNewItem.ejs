@@ -1,0 +1,31 @@
+<%- include("./partials/header"); %>
+<%- include("./partials/errors"); %>
+<form class="addNewItem" action="/newItem" method="POST">
+    <div>
+        <label for="itemName">Item name:</label>
+        <input id="itemName" type="text" required name="itemName" />
+    </div>
+    <div>
+        <label for="itemQuantity">Item quantity:</label>
+        <input id="itemQuantity" type="number" min="0" required name="itemQuantity" />
+    </div>
+    <div>
+        <label for="itemPrice">Item price:</label>
+        <input id="itemPrice" type="number" min="0" step="0.01" required name="itemPrice" />
+    </div>
+    <div>
+        <label for="itemCategory">Item Categories(optional):</label>
+        <ul>
+            <% categories.map(category => { %>
+                <li>
+                    <label>
+                        <input type="checkbox" name="category" value="<%= category.id %>" />
+                        <%= category.name %>
+                    </label>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    <button type="submit">Add</button>
+</form>
+<%- include("./partials/footer"); %>

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const inventoryController = require("../controllers/inventoryController");
+const itemsController = require("../controllers/itemsController");
 
 const inventoryRouter = Router();
 
@@ -12,5 +13,12 @@ inventoryRouter.get("/:id/categoryDetails", inventoryController.categoryDetailsG
 inventoryRouter.get("/:id/categoryDelete", inventoryController.categoryDeleteGet);
 inventoryRouter.get("/:id/categoryUpdate", inventoryController.categoryUpdateGet);
 inventoryRouter.post("/:id/categoryUpdate", inventoryController.categoryUpdatePost);
+
+inventoryRouter.get("/newItem", itemsController.itemAddGet);
+inventoryRouter.post("/newItem", itemsController.itemAddPost);
+inventoryRouter.get("/:id/itemDetails", itemsController.itemDetailsGet);
+inventoryRouter.get("/:id/itemUpdate", itemsController.itemUpdateGet);
+inventoryRouter.post("/:id/itemUpdate", itemsController.itemUpdatePost);
+inventoryRouter.get("/:id/itemDelete", itemsController.itemDeleteGet);
 
 module.exports = inventoryRouter;

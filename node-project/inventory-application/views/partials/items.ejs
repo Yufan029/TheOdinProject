@@ -1,9 +1,18 @@
 <h1 class="itemsTitle">Items:</h1>
-<a class="addItemBtn" href="/itemAdd">New</a>
-<% if (!locals.items || items.length === 0) { %>
-    <h1>No Items.</h1>
-<% } else { %>
-    <% locals.items.map(item => { %>
-        <li><%= item.name %></li>
-    <%})%>
+<a class="addItemBtn" href="/newItem">New</a>
+<% if (!locals.items || locals.items.length === 0) { %>
+    <h1 class="noItems">No Items.</h1>
+<% } else { %>    
+    <ul class="itemLists">
+        <% items.map(item => { %>
+            <li>
+                <%= item.name %>
+                <div>
+                    <a href="/<%= item.id %>/itemDetails">Details</a>
+                    <a href="/<%= item.id %>/itemUpdate">Update</a>
+                    <a href="/<%= item.id %>/itemDelete?selected=<%= selected.join(',') %>">Delete</a>
+                </div>
+            </li>
+        <%})%>
+    </ul>
 <% } %>

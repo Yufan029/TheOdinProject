@@ -12,8 +12,23 @@ async function inventoryGet(req, res) {
 }
 
 async function categoryDeleteGet(req, res) {
+    const selected = req.query.selected ? req.query.selected.split(',') : [];
+    const selectedNoDeleted = selected.filter(x => x !== req.params.id);
+
     await db.deleteCategory(req.params.id);
-    res.redirect("/");
+    const categories = await db.getAllCategories();
+
+    let items = [];
+    if (selected.length !== 0) {
+        items = await db.getAllItemsByCategories(selectedNoDeleted);
+    }
+    
+    res.render("index", {
+        title: "Inventory",
+        categories,
+        selected,
+        items,
+    });
 }
 
 async function categoryUpdateGet(req, res) {
@@ -30,7 +45,7 @@ async function selectedCategoriesGet(req, res) {
 
     console.log("selected categories:", selected);
 
-    const items = await db.getAllItems(selected);    
+    const items = await db.getAllItemsByCategories(selected);    
     console.log("selected items:", items);
 
     res.render("index", {
