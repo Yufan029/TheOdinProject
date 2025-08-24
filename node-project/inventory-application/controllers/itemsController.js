@@ -102,7 +102,7 @@ const itemUpdatePost = [
 
         const { id } = req.params;
         console.log(req.body);
-        await db.updateItemById(id, itemName, newQuantity, newPrice, category !== undefined ? category : []);
+        await db.updateItemById(id, itemName, newQuantity, newPrice, category !== undefined ? [...category] : []);
 
         res.redirect("/");
     }
