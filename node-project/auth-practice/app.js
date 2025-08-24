@@ -5,6 +5,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const pgSessionStore = require("connect-pg-simple")(session);
 
 const pool = new Pool({
     host: "localhost",
@@ -19,29 +20,40 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
-app.use(passport.session());
+app.use(session(
+    {
+        store: new pgSessionStore({
+            pool: pool,
+            createTableIfMissing: true,
+            ttl: 24 * 60 * 60,
+        }),
+        secret: process.env.SESSION_SECRET || "cats",
+        resave: false,
+        saveUninitialized: false 
+    }
+));
 
+app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-async function test() {
-    const password1 = "123456";
-    const password2 = "123456";
+// async function test() {
+//     const password1 = "123456";
+//     const password2 = "123456";
 
-    const salt = bcrypt.genSaltSync(10);
+//     const salt = bcrypt.genSaltSync(10);
 
-    console.log(`salt: ${salt}`);
+//     console.log(`salt: ${salt}`);
 
-    // same salt same result.
-    console.log(await bcrypt.hash(password1, salt));
-    console.log(await bcrypt.hash(password2, salt));
+//     // same salt same result.
+//     console.log(await bcrypt.hash(password1, salt));
+//     console.log(await bcrypt.hash(password2, salt));
 
-    // 10 means the cost factor (how many times hashing runs).
-    console.log(await bcrypt.hash(password1, 10));
-    console.log(await bcrypt.hash(password2, 10));
-}
+//     // 10 means the cost factor (how many times hashing runs).
+//     console.log(await bcrypt.hash(password1, 10));
+//     console.log(await bcrypt.hash(password2, 10));
+// }
 
-test();
+// test();
 
 // custom middleware to store the currentUser if exist into the res.locals object,
 // Then currentUser can be used in all the views and no need to pass it anymore, like a context in React.
@@ -51,9 +63,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// This is only track per-session visits.
 app.get("/", (req, res) => {
-    
-    res.render("index");
+    console.log(`current user: ${req.user?.username} is authenticated: ${req.isAuthenticated()}`);
+    if (req.session.views) {
+        req.session.views++;
+    } else {
+        req.session.views = 1;
+    }
+
+    res.render("index", { viewCount: req.session.views });
 });
 
 app.get("/sign-up", (req, res) => res.render("sign-up-form"));
