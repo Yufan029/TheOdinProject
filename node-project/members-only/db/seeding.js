@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS messages (
     text TEXT,
     time TIMESTAMP,
     authorid INTEGER,
-    CONSTRAINT fk_authorid FOREIGN KEY (authorid) REFERENCE users(id)
+    CONSTRAINT fk_authorid FOREIGN KEY (authorid) REFERENCES users(id)
 );
 `
 
@@ -31,6 +31,9 @@ async function seeding() {
         database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
         port: process.env.DATABASE_PORT,
+        ssl: {
+            rejectUnauthorized: false   // allow self-signed certs
+        }
     })
 
     await client.connect();
