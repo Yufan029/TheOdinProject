@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/newMessage.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Add new message</h1>
+    <form action="/message/new" method="post">
+        <section>
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" placeholder="title" required />
+        </section>
+        <textarea id="content" name="content" placeholder="content"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

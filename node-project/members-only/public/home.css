@@ -1,0 +1,122 @@
+body {
+    width: 70%;
+    margin: 0 auto;
+}
+
+header {
+    margin: 0 auto;
+    height: 120px;
+    padding: 1rem 1rem 1rem 2rem;
+    background-color: rgb(252, 120, 97);
+    border-radius: 0 0 10px 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h2 {
+    font-size: 3rem;
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+header a.new-message {
+    font-size: 2rem;
+    background-color: rgb(213, 124, 248);
+    padding: .5rem 1.5rem;
+}
+
+header a.new-message:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    list-style-type: none;
+    font-size: 1.5rem;
+}
+
+.member-id,
+.visit-times {
+    font-size: small;
+}
+
+/* background image by Cole Bemis <https://feathericons.com> */
+ul .username {
+    padding-left: 30px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-user'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+/* background image by Cole Bemis <https://feathericons.com> */
+ul .logout {
+	padding-left: 30px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3E%3C/path%3E%3Cpolyline points='16 17 21 12 16 7'%3E%3C/polyline%3E%3Cline x1='21' y1='12' x2='9' y2='12'%3E%3C/line%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+.join-club:hover,
+.logout a:hover,
+.login:hover,
+.signup:hover {
+    text-decoration: underline;
+}
+
+.logout a {
+    color:black
+}
+
+.join-club {
+    margin-left: 1rem;
+    padding: 2px 15px;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, #d2d20f, #eb9c0b, red);
+}
+
+.cards {
+    margin: 1rem;
+}
+
+.card {
+    max-width: 95%;
+    border: 1px solid tomato;
+    border-radius: 10px;
+    padding: 20px 20px;
+    margin: 1.2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 20fr;
+    align-items: center;
+    gap: .5rem 2rem;
+}
+
+.blur-content {
+    filter: blur(5px);
+}
+
+footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+
+.delete-button {
+    background-color: tomato;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: #c83f45;
+}

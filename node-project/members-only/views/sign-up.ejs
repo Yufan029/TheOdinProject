@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/base.css">
+        <link rel="stylesheet" href="/signUp.css">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <main>
+            <h1 class="signUpHeader">
+                Sign up
+            </h1>
+            <% if (locals.errors) { %>
+                <ul class="sign-up-error">
+                    <% locals.errors.map(error => { %>
+                        <li><%= error.msg %></li>
+                    <%})%>
+                </ul>
+            <% } %>
+            <form class="signUpForm" action="/sign-up" method="POST">
+                <label for="firstname">firstname:</label>
+                <input id="firstname" type="text" name="firstname" value="<%= locals.firstname || '' %>" required />
+                <label for="lastname">Last name:</label>
+                <input id="lastname" type="text" name="lastname" value="<%= locals.lastname || '' %>" required />
+                <label for="email">Email (your username for login):</label>
+                <input id="email" type="email" name="email" value="<%= locals.email || '' %>" required />
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password" value="<%= locals.password || '' %>" required />
+                <label for="confirmPassword">Confirm password:</label>
+                <input id="confirmPassword" type="password" name="confirmPassword" value="<%= locals.confirmPassword || '' %>" required />
+                <div>
+                    <input id="isAdmin" type="checkbox" name="isAdmin" />
+                    <label for="isAdmin" >Administrator</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <hr />
+            <div class="loginLink">
+                <p>Already have an account? <a href="/login">Sign in</a></p>
+                <p>Copyright &copy <%= new Date().getFullYear() %></p>
+            </div>
+        </main>
+        
+    </body>
+</html>

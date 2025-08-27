@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/base.css">
+        <link rel="stylesheet" href="/login.css">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <main>
+            <h1 class="loginHeader">
+                Login
+            </h1>
+            <form class="loginForm" action="/login" method="POST">
+                <label for="email">Username (email):</label>
+                <input id="email" type="email" name="email" required />
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password" required />
+                <button type="submit">Submit</button>
+            </form>
+            <hr />
+            <div class="signUpLink">
+                <p>Don't have an account? <a href="/sign-up">Sign up</a></p>
+                <p>Copyright &copy <%= new Date().getFullYear() %></p>
+            </div>
+        </main>
+    </body>
+</html>

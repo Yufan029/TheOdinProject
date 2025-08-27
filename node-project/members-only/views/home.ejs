@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/home.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <header>
+        <h2>Members' Messages</h2>
+        <% if (currentUser) { %>
+            <a class="new-message" href="/message/new/">New Message</a>
+        <%}%>
+        <nav>
+            <ul>
+                <% if (!currentUser) { %>
+                    <li><a class="login" href="/login">Log in</a></li>
+                    <li><a class="signup" href="/sign-up">Sign up</a></li>
+                <% } else { %>
+                    <li class="username">
+                        <%= currentUser.firstname %> <%= currentUser.lastname %>
+                        <span class="visit-times">
+                            <%= currentUser.viewcount > 1 ? `visited ${currentUser.viewcount} times` : "" %>
+                        </span>
+                        <% if (!currentUser.ismember) { %>
+                            <a class="join-club" href="/join-club">Join</a>
+                        <%} else {%>
+                            <span class="member-id">, Member: <%= currentUser.id %></span>
+                        <%}%>
+                    </li>
+                    <li class="logout"><a href="/logout">Log out</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cards">
+            <% messages.map(message => { %>
+                <div class="card">
+                    <label>Title:</label>
+                    <h3><%= message.title %></h3>
+                    <label>Message:</label>
+                    <p><%= message.text %></p>
+                    <label>Author:</label>
+                    <p <%- currentUser && (currentUser.ismember || currentUser.isadmin) ? '' : 'class="blur-content"' %>><%= message.firstname %> <%= message.lastname %></p>
+                    <label>Time:</label>
+                    <p <%- currentUser && (currentUser.ismember || currentUser.isadmin) ? '' : 'class="blur-content"' %>><%= message.time.toLocaleString() %></p>
+                    <% if (currentUser && currentUser.isadmin) { %>
+                        <a class="delete-button" href="/message/delete/<%= message.id %>">Delete</a>
+                    <%}%>
+                </div>
+            <%})%>
+        </section>
+    </main>
+    <footer>Copyright &copy <%= new Date().getFullYear() %></footer>
+</body>
+</html>
