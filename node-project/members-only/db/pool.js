@@ -7,7 +7,7 @@ const pool = new Pool({
     password: process.env.DATABASE_PASSWORD,
     port: process.env.DATABASE_PORT,
     ssl: {
-            rejectUnauthorized: false   // allow self-signed certs
+        rejectUnauthorized: false   // allow self-signed certs
     }
 });
 
