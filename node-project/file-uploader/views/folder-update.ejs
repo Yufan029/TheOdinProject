@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/folder-update.css">
+    <title>Folder Update</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <section>
+        <h1 class="update-folder-header">Update folder name</h1>
+        <form action="/folder/update/<%= folder.id %>" method="POST">
+            <input type="text" name="updatedFolderName" value="<%= folder.name %>" required />
+            <button type="submit">Save</button>
+        </form>
+    </section>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

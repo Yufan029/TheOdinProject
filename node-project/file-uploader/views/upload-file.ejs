@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/upload-file.css">
+    <title>Upload file</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <main>
+        <h1>Upload file</h1>
+        <form action="/upload?parentFolderId=<%= parentFolderId ?? 'null' %>&userId=<%= userId %>" method="post" enctype="multipart/form-data">
+            <input type="file" name="uploadFile" required />
+            <button type="submit">Upload</button>
+        </form>
+    </main>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

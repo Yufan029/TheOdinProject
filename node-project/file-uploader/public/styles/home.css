@@ -1,0 +1,144 @@
+.header-no-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: rgb(131, 225, 228);
+}
+
+.main-no-login {
+    color: darkblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+
+.register-info {
+    padding: .5rem 1rem;
+    font-size: 1.4rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.register-info a {
+    text-decoration: none;
+}
+
+.register-info a:hover {
+    text-decoration: underline;
+}
+
+.current-path {
+    display: flex;
+    gap: .5rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.path {
+    list-style-type: none;
+    display: flex;
+    gap: .1rem;
+}
+
+.path-label {
+    font-size: large;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.create-folder-btn,
+.upload-btn {
+    text-decoration: none;
+    padding: 3px 6px;
+}
+
+.separator {
+    transform: scale(1.3);
+    margin: 0 .2rem;
+    opacity: .6;
+}
+
+.add-folder-upload {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.img-add-folder,
+.img-upload {
+    width: 35px;
+}
+
+.img-add-folder:hover,
+.img-upload:hover {
+    transform: scale(1.1);
+}
+
+hr {
+    margin: .2rem 0;
+}
+
+.folder-content {
+    width: 50%;
+    margin: 2rem auto;
+    padding: 1rem 3rem;
+    font-size: larger;
+    background-color:aliceblue;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.img-folder,
+.img-edit,
+.img-download {
+    width: 24px;
+}
+
+.img-delete,
+.img-file {
+    width: 22px;
+}
+
+.img-edit:hover,
+.img-download:hover,
+.img-delete:hover {
+    transform: scale(1.2);
+}
+
+.path li {
+    display: flex;
+    gap: .1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: large;
+}
+
+.folder-contents li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folder-contents:first-child {
+    margin-top: 2rem;
+}
+
+.folder-name,
+.file-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+}
+
+.item:hover {
+    background-color: #eee;
+}

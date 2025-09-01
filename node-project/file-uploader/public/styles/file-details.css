@@ -1,0 +1,48 @@
+.file-details {
+    width: 55%;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    margin: 2rem auto;
+    font-size: large;
+    text-align: left;
+}
+
+.l-name, 
+.p-name,
+.l-size,
+.p-size,
+.l-time,
+.p-time {
+    border-top: 1px solid rgb(131, 225, 228);
+    padding: .3rem .6rem;
+}
+
+.l-name,
+.l-size,
+.l-time {
+    border-left: 1px solid rgb(131, 225, 228);
+}
+
+.l-time,
+.p-time {
+    border-bottom: 1px solid rgb(131, 225, 228);
+}
+
+.p-name,
+.p-size,
+.p-time {
+    border-left: 1px solid rgb(131, 225, 228);
+    border-right: 1px solid rgb(131, 225, 228);
+}
+
+.download {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.img-download {
+    width: 24px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/folder-create.css">
+    <title>Create new folder</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <section>
+        <h1 class="title">Create new folder</h1>
+        <form action="/folder/create?parentFolderId=<%= parentFolderId ?? null %>" method="post">
+            <label id="new-folder">Folder name:</label>
+            <input id="new-folder" type="text" name="folderName" required />
+            <button type="submit">Create</button>
+        </form>
+    </section>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

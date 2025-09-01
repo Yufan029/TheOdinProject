@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+}
+
+.header-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: rgb(131, 225, 228);
+}
+
+.logo {
+    padding: .5rem 2rem;
+}
+
+.login-info {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    font-size: x-large;
+}
+
+.login-info a {
+    text-decoration: none;
+}
+
+.login-info a:hover {
+    text-decoration: underline;
+}
+
+
+/* background image by Cole Bemis <https://feathericons.com> */
+.username {
+    padding-left: 30px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-user'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+/* background image by Cole Bemis <https://feathericons.com> */
+.logout {
+	padding-left: 30px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3E%3C/path%3E%3Cpolyline points='16 17 21 12 16 7'%3E%3C/polyline%3E%3Cline x1='21' y1='12' x2='9' y2='12'%3E%3C/line%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

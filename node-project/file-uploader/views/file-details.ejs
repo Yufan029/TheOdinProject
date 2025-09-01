@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/file-details.css">
+    <title>File Details</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <div class="file-details">
+        <label class="l-name">Name</label>
+        <p class="p-name"><%= file.name %></p>
+        <label class="l-size">Size</label>
+        <p class="p-size"><%= file.size %></p>
+        <label class="l-time">Created time</label>
+        <p class="p-time"><%= file.createdAt.toUTCString() %></p>
+        <a class="download" href="/file/download/<%= file.id %>"><img class="img-download" src="/images/download.svg"/>Download</a>
+    </div>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

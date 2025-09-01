@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/home.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+        <title>File Uploader</title>
+    </head>
+    <body>
+        <% if (!locals.currentUser) { %>
+            <header class="header-no-login">
+                <h1 class="logo">File uploader</h1>
+                <div class="register-info">
+                    <a href="/register">Register</a>
+                    <a href="/login">log in</a>
+                </div>                
+            </header>
+            <main class="main-no-login">
+                <p>Please register to store your own files.</p>
+            </main>
+        <% } else { %>
+            <%- include('./partials/header'); %>
+            <main class="folder-content">
+                <section class="add-folder-upload">
+                    <a class="create-folder-btn" href="/folder/create?parentFolderId=<%= currentFolder.id ?? 'null' %>">
+                        <img class="img-add-folder" src="/images/add-folder.svg" /></a>
+                    <span class="separator">|</span>
+                    <a class="upload-btn" href="/upload?parentFolderId=<%= currentFolder.id ?? 'null' %>&userId=<%= currentUser.id %>">
+                        <img class="img-upload" src="/images/upload.svg" />
+                    </a>
+                </section>
+                <section class="current-path">
+                    <% if (locals.currentFolder.path) { %>
+                        <ul class="path">
+                            <% currentFolder.path.map(p => { %>
+                                <li>
+                                    <a href='/folder/<%= p.id %>'><%= p.name %></a>
+                                    <span>/</span>
+                                </li>
+                            <%})%>
+                        </ul>
+                    <% } %>
+                </section>
+                <hr>
+                <% if (locals.currentFolder) { %>
+                    <ul class="folder-contents">
+                        <% currentFolder.subFolders.map(folder => { %>
+                            <li class="item">
+                                <div class="folder-name">
+                                    <img class="img-folder" src="/images/folder.svg"/><a href="/folder/<%= folder.id %>"><%= folder.name %></a>
+                                </div>                                
+                                <section>
+                                    <a href="/folder/update/<%= folder.id %>"><img class="img-edit" src="/images/edit.svg"></span></a>
+                                    <a href="/folder/delete/<%= folder.id %>"><img class="img-delete" src="/images/delete.svg"></span></a>
+                                </section>
+                            </li>
+                        <% }) %>
+                        <% currentFolder.subFiles.map(file => {%>
+                            <li class="item">
+                                <div class="file-name">
+                                    <img class="img-file" src="/images/file.svg">
+                                    <a href="/file/<%= file.id %>"><%= file.name %></a>
+                                </div>
+                                <section>
+                                    <a href="/file/update/<%= file.id %>"><img class="img-edit" src="/images/edit.svg" /></a>
+                                    <a href="/file/delete/<%= file.id %>"><img class="img-delete" src="/images/delete.svg" /></a>
+                                    <a href="/file/download/<%= file.id %>"><img class="img-download" src="/images/download.svg"></a>
+                                </section>
+                            </li>
+                        <%})%>
+                    </ul>
+                <% } %>
+            </main>
+        <% } %>
+        <%- include("./partials/footer") %>
+    </body>
+</html>
