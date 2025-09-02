@@ -3,6 +3,11 @@ const prisma = new PrismaClient();
 const multer = require('multer');
 const path = require('node:path');
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    secure: true
+});
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -18,7 +23,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage });
 
 async function homeGet(req, res) {
     const currentFolderId = req.session.currentFolderId ? Number(req.session.currentFolderId) : null;
@@ -63,11 +68,6 @@ async function homeGet(req, res) {
     });
 }
 
-function profileUpload(req, res) {
-    console.log("body:", req.body);
-    console.log("file:", req.file);
-}
-
 function uploadGet(req, res) {
     const { parentFolderId, userId } = req.query;
     res.render('upload-file', {
@@ -76,17 +76,60 @@ function uploadGet(req, res) {
     });
 }
 
+function getResourceTypeByFilename(ext) {
+  //const ext = path.extname(filename).toLowerCase();
+
+  if ([".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp", ".tiff"].includes(ext)) {
+    return "image";
+  }
+
+  if ([".mp4", ".avi", ".mov", ".mkv", ".webm"].includes(ext)) {
+    return "video";
+  }
+
+  // Default everything else to raw (PDF, ZIP, DOCX, etc.)
+  return "raw";
+}
+
+const uploadImage = async (imagePath) => {
+    // Use the uploaded file's name as the asset's public ID and 
+    // allow overwriting the asset with new versions
+
+    console.log(path.parse(imagePath).ext.toLowerCase());
+    let resourceType = getResourceTypeByFilename(path.parse(imagePath).ext.toLowerCase());
+    console.log('resource-type = ', resourceType);
+
+    const options = {
+        use_filename: true,
+        unique_filename: false,
+        overwrite: true,
+        resource_type: resourceType,
+    };
+
+    try {
+        // Upload the image
+        return await cloudinary.uploader.upload(imagePath, options);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const uploadPost = [
     upload.single('uploadFile'),
     async (req, res, next) => {
+        const result = await uploadImage(req.file.path);
+
+        console.log('upload result:', result);
         const { parentFolderId, userId } = req.query;
 
         await prisma.file.create({
             data: {
                 name: req.file.originalname,
-                path: req.file.path,
+                path: result.secure_url,
                 size: req.file.size,
                 mimeType: req.file.mimetype,
+                publicId: result.public_id,
+                resourcetype: result.resource_type,
                 folderId: Number(parentFolderId),
                 userId: Number(userId),
             }
@@ -118,7 +161,6 @@ async function getCurrentFolderPath(currentFolderId, path) {
 
 module.exports = {
     homeGet,
-    profileUpload,
     uploadGet,
     uploadPost,
 }

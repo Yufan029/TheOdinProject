@@ -13,7 +13,7 @@
         <h1 class="title">Create new folder</h1>
         <form action="/folder/create?parentFolderId=<%= parentFolderId ?? null %>" method="post">
             <label id="new-folder">Folder name:</label>
-            <input id="new-folder" type="text" name="folderName" required />
+            <input id="new-folder" type="text" name="folderName" required autofocus />
             <button type="submit">Create</button>
         </form>
     </section>

@@ -6,7 +6,7 @@ section {
 }
 
 .title {
-    color: tomato;
+    color: var(--primary-color);
     margin: 1rem;
 }
 
@@ -25,9 +25,10 @@ input {
 button {
     height: 24px;
     color:white;
-    background-color: tomato;
+    background-color: var(--primary-color);
 }
 
 button:hover {
-    background-color: rgb(255, 66, 33);
+    background-color: var(--primary-color-hover);
+    cursor: pointer;
 }

@@ -61,6 +61,11 @@ async function folderUpdatePost(req, res) {
 }
 
 async function folderDeleteGet(req, res) {
+    // only delete the selected folder, leave the children content
+    // the next level of folder will attach to the root folder, (home), need manually delete.
+    // if needs to delete all sub folders and files, need to implement recursively,
+    // check the children and each child's children and delete from the bottom
+
     await prisma.folder.delete({
         where: {
             id: Number(req.params.id)

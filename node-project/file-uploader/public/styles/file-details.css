@@ -13,26 +13,26 @@
 .p-size,
 .l-time,
 .p-time {
-    border-top: 1px solid rgb(131, 225, 228);
+    border-top: 1px solid var(--primary-color);
     padding: .3rem .6rem;
 }
 
 .l-name,
 .l-size,
 .l-time {
-    border-left: 1px solid rgb(131, 225, 228);
+    border-left: 1px solid var(--primary-color);
 }
 
 .l-time,
 .p-time {
-    border-bottom: 1px solid rgb(131, 225, 228);
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .p-name,
 .p-size,
 .p-time {
-    border-left: 1px solid rgb(131, 225, 228);
-    border-right: 1px solid rgb(131, 225, 228);
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
 }
 
 .download {

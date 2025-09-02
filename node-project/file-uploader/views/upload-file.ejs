@@ -12,7 +12,7 @@
     <main>
         <h1>Upload file</h1>
         <form action="/upload?parentFolderId=<%= parentFolderId ?? 'null' %>&userId=<%= userId %>" method="post" enctype="multipart/form-data">
-            <input type="file" name="uploadFile" required />
+            <input type="file" name="uploadFile" required autofocus/>
             <button type="submit">Upload</button>
         </form>
     </main>
