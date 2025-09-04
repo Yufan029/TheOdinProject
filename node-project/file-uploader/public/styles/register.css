@@ -13,6 +13,7 @@ h1 {
 }
 
 section {
+    width: 350px;
     background-color: #eee;
     padding: 2rem;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -30,6 +31,7 @@ label {
     gap: .2rem;
     opacity: .8;
     font-size: small;
+    width: 100%;
 }
 
 input, 
@@ -38,6 +40,7 @@ button {
     border-radius: 5px;
     padding: 4px 8px;
     width: 225px;
+    width: 100%;
 }
 
 button {
@@ -78,9 +81,8 @@ p:last-child {
     font-style: italic;
 }
 
-.sign-up-error {
+.register-error {
     color: red;
-    position: relative;
-    right: -50px;
-    top: 20px;
+    font-size: small;
+    margin-bottom: .8rem;
 }
