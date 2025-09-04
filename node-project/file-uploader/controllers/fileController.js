@@ -6,6 +6,15 @@ const { sign } = require('crypto');
 
 const prisma = new PrismaClient();
 
+function fileSizeFormat(fileSize, n = 0) {
+    const unitSystem = ["bytes", "KB", "MB", "GB"];
+    if (fileSize > 1024) {
+        return fileSizeFormat(fileSize / 1024, n + 1);
+    }
+
+    return `${Math.round(fileSize * 100) / 100} ${unitSystem[n]}`;
+}
+
 async function fileGet(req, res) {
 console.log(req.params);
     const file = await prisma.file.findUnique({
@@ -14,18 +23,11 @@ console.log(req.params);
         }
     });
 
-    let sizeInKb = file.size / 1024;
-    let sizeInMb = file.size / (1024 * 1024);
-    if (sizeInKb < 100) {
-        file.size = file.size + 'bytes';
-    } else if (sizeInKb > 100 && sizeInKb < 1000) {
-        file.size = sizeInKb.toFixed(2) + 'KB';
-    } else if (size > 1000) {
-        file.size = sizeInMb.toFixed(2) + 'MB';
-    }
+    const fileSize = fileSizeFormat(file.size);
     
     res.render('file-details', {
-        file
+        file,
+        fileSize,
     });
 }
 
